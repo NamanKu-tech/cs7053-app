@@ -123,3 +123,4 @@ def toggle_material(slug: str, material_id: int, db: Session = Depends(get_db), 
         row.completed_at = datetime.utcnow() if row.completed else None
     db.commit()
     return {"completed": row.completed}
+
