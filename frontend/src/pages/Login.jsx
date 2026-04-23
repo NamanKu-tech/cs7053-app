@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { GoogleLogin } from "@react-oauth/google"
 import { useAuth } from "../context/AuthContext"
@@ -6,18 +6,21 @@ import { useAuth } from "../context/AuthContext"
 export default function Login() {
   const { googleLogin, isAuthed } = useAuth()
   const navigate = useNavigate()
+  const [error, setError] = useState("")
 
   useEffect(() => {
     if (isAuthed) navigate("/dashboard")
   }, [isAuthed, navigate])
 
   async function handleSuccess(response) {
+    setError("")
     try {
       await googleLogin(response.credential)
       navigate("/dashboard")
     } catch (err) {
-      const detail = err.response?.data?.detail
-      alert(detail || "Login failed")
+      const status = err.response?.status
+      if (status === 403) setError("Please sign in with your @tcd.ie account.")
+      else setError("Login failed. Try again.")
     }
   }
 
@@ -31,12 +34,13 @@ export default function Login() {
         <p className="text-xs text-gray-500">Sign in with your @tcd.ie Google account</p>
         <GoogleLogin
           onSuccess={handleSuccess}
-          onError={() => alert("Google login failed")}
+          onError={() => setError("Google login failed. Try again.")}
           theme="filled_black"
           shape="rectangular"
           size="large"
           text="signin_with"
         />
+        {error && <p className="text-red-400 text-sm text-center">{error}</p>}
       </div>
     </div>
   )
