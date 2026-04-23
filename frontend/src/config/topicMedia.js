@@ -16,7 +16,7 @@ export const TOPIC_MEDIA = {
   "real-incidents":           { videoUrl: `${MEDIA}/materials/Real%20Incidents.mp4`,                   audioUrl: `${MEDIA}/materials/Episode%207.m4a` },
 
   // ── Q2: TLS / Protocols ───────────────────────────────────────────────────
-  "tls13-handshake":    { videoUrl: `${MEDIA}/materials/Unpacking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/Why_Standard_Primes_and_Firewalls_Fail.m4a` },
+  "tls13-handshake":    { videoUrl: `${MEDIA}/materials/Unpacking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/TLS_1.3.m4a` },
   "tls13-key-schedule": { videoUrl: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
   "tls13-record-layer": { videoUrl: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
   "forward-secrecy":    { videoUrl: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`,            audioUrl: `${MEDIA}/materials/TLS%20Audio%201.m4a` },
