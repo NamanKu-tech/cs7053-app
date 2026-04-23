@@ -54,7 +54,7 @@ _EXAM_CARDS = [
     ]},
 ]
 
-_GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+_GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent"
 
 _GRADING_PROMPT = (
     "You are an exam grader for a graduate-level Security & Privacy course at Trinity College Dublin (CS7053). "
