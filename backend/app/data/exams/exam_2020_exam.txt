@@ -1,0 +1,122 @@
+                      Paper Code
+                                                        
+                  Faculty of Engineering, Mathematics and Science
+                       School of Computer Science & Statistics
+           MSc in Computer Science  Hilary Term 2020             Year 1
+                                              
+                   Security of Networks and Distributed Systems
+                                  CS7NS5/CSU44032
+           XX April 2020              LOCATION              09.30 – 11.30
+                                 Dr. Stephen Farrell
+           Instructions to Candidates:
+           Attempt three questions.  All questions carry equal marks.
+           You may not start this examination until you are instructed to do so 
+           by the invigilator.
+           Materials Permitted for this examination:
+           N/A
+                                           Paper Code
+       Question 1.
+       As part of a due-diligence exercise, you are hired to do a risk analysis 
+       by a primarily online travel agency who are acquiring a competitor in 
+       a market dramatically, but hopefully temporarily, shrinking due to the 
+       COVID19  pandemic. The targets for your analysis are the online 
+       booking systems currently deployed by the company being acquired. 
+       New risks that may be created due to the merger are in scope, as well 
+       as an evaluation of the risks associated with the to-be-deployed 
+       company’s existing systems. The finances and other general business 
+       issues related to the acquisition are handled by others and need not 
+       be part of your risk analysis.
+       (a)  Describe the risk analysis process you would follow in order to 
+       assist the acquiring company. (Note – this part of the answer is about 
+       process,   not   the   details   of   technical   mechanisms   for   web-site 
+       security.)
+                                        [10 marks]
+       (b)  Describe the most relevant risks (at least 3) you see in this 
+       scenario, including their potential impact and likelihood of occurrence, 
+       and outline the countermeasures you would recommend that the 
+       acquiring company ought implement or deploy to mitigate those risks. 
+                                        [25 marks]
+       (c) It is often the case that the jobs or roles of systems administrators 
+       in the to-be-acquired company undergo significant change, up to and 
+       frequently including  job losses. How would you recommend the 
+       acquiring company deal with the risk of misbehaviour by such staff in 
+       the to-be-acquired company?  
+                                         [5 marks]
+                        Page 2 of 5
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Question 2. 
+       (a) For any real Internet key exchange protocol (e.g. TLS, IPsec, or 
+       Kerberos)   describe   the   key   management   and   application   data 
+       protection aspects of the protocol in detail. Describe how your chosen 
+       protocol handles cryptographic agility and how that might affect the 
+       evolution of implementations and deployments over time.
+       Your answer may describe any widely used version of your chosen 
+       protocol, but you need to explicitly state which version you are 
+       describing. 
+                                        [20 marks]
+       (b)   Describe   how   some   application   uses   your   chosen   protocol 
+       highlighting long-term key management and provisioning issues. (For 
+       example you might describe how the web uses TLS, or how SMTP 
+       uses STARTTLS.) Include details of any changes to that application 
+       that were required to integrate with your chosen key exchange 
+       protocol. What security services does your chosen key exchange 
+       protocol enable for that application?
+                                        [15 marks]
+       (c) For your chosen protocol, what guidance would you offer today to 
+       an   implementer   concerned   about   attacks   based   on   quantum 
+       computing?
+                                         [5 marks]
+                        Page 3 of 5
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Question 3. 
+       You are tasked to develop a desktop or smartphone application for 
+       measuring the availability of web sites and specific URLs. The 
+       application will use a curated list of domain names and URLs and 
+       establish whether a web site at that domain is operating and whether 
+       or not the configured URLs are accessible. The application should be 
+       able to refresh the curated list and also allow users to manage their 
+       local copy of the list (e.g. allowing additions and deletions). The main 
+       purpose of the application is to measure availability over time but the 
+       application may also be used to detect censorship. If the user allows, 
+       the application will upload results to a web server at which (a version 
+       of) those will be made publicly available. The application is primarily 
+       intended for use in relatively safe environments, e.g., within a 
+       campus network or a country with a “liberal” regime and little 
+       censorship.
+       (a) Outline your overall design for such a system (include a network 
+       diagram), and state the security and privacy requirements the 
+       application and overall system must meet. Note that this part of your 
+       answer should only discuss requirements and not describe how to 
+       meet those requirements.
+                                        [15 marks]
+       (b) Describe, in detail, the security and privacy solutions you would 
+       propose to meet those requirements. 
+                                        [20 marks]
+       (c) While your application is mainly intended for use in relatively safe 
+       environments, it could also be used by people in more challenging 
+       situations,   e.g.,   where   even   checking   for   censored   content   is 
+       significantly risky. What additional measures would you consider to 
+       try make your application safer for such users?
+                                         [5 marks]
+                        Page 4 of 5
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Question 4. 
+       (a) Describe the overall architecture of WebRTC and how a voice call 
+       between two browsers works. Your description should include the 
+       networking, security and privacy features that are built-in to WebRTC.
+                                        [20 marks]
+       (b) What privacy issues would arise if WebRTC were to replace all or 
+       almost all voice communications? For those you consider significant 
+       concerns, how would you suggest they be controlled or otherwise 
+       mitigated? For those where you are sanguine as to the risks, justify 
+       your position.
+                                        [15 marks]
+       (c) If you were a criminal, what kinds of fraud would you attempt 
+       using your own WebRTC services? How might you attempt to avoid 
+       being caught?
+                                         [5 marks]
+                        Page 5 of 5
+          © Trinity College Dublin, The University of Dublin 2020

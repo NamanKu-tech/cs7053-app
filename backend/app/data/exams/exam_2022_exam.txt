@@ -1,0 +1,91 @@
+                                                      Paper Code
+                                                                                                                                          
+                                                             Faculty of Engineering, Mathematics and Science
+                                                                      School of Computer Science & Statistics
+                                                      MSc in Computer Science                               Hilary Term 2022        Year 1
+                                                                                                                    
+                                                              Security of Networks and Distributed Systems
+                                                                                       CS7NS5/CSU44032
+                                         03 May 2022                                          RDS Main Hall                                         09.30 – 11.30
+                                                                                       Dr. Stephen Farrell
+                           Instructions to Candidates:
+                           Attempt three questions.  All questions carry equal marks (40 each).
+                           You may not start this examination until you are instructed to do so by the invigilator.
+                           Materials Permitted for this examination:
+                           N/A
+                                             Paper Code
+       Question 1
+       Many people are in the process of returning to the ofÏce, or forms of hybrid working 
+       from home and ofÏce. A software business has approximately 1000 employees across 
+       three locations: Dublin, London and San Francisco. The company is concerned about 
+       risks associated with the new situation, given that the switch in 2020 to working-from-
+       home was done in emergency mode, and there may be new risks associated with 
+       hybrid modes of working. They therefore contract with you to carry out a risk analysis 
+       to help them manage the ongoing transition.
+       (a)  Describe the process you would use to carry out this task (note: this part of the 
+       question asks about process, not the specific risks associated with hybrid working).
+                                          [15 marks]
+       (b) Describe three significant risks specific to hybrid working that the company faces, 
+       including   their   potential   impact   and   likelihood   of   occurrence,   and   outline 
+       countermeasures you would recommend that the company ought apply.
+                                          [20 marks]
+       (c)   What specific kinds of security and privacy training would you recommend to 
+       handle this hybrid situation for technical (e.g. programmers) and non-technical (e.g. 
+       sales) employees and why?
+                                          [5 marks]
+                        Page 2 of 5
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       Question 2
+       (a) For any real Internet key exchange protocol (e.g. TLS, IPsec, or Kerberos) describe 
+       the key management and application data protection aspects of the protocol in detail. 
+       Describe how your chosen protocol supports cryptographic algorithm agility.
+       Your answer may describe any widely used version of your chosen protocol, but you 
+       must explicitly state which version. 
+                                          [25 marks]
+       (b) What problems (e.g. caused by key sizes) would you expect to see if current 
+       candidate post-quantum algorithms are to be integrated into your chosen protocol?
+                                          [10 marks]
+       (c) What criteria would you suggest should be required to be met before use of an 
+       existing cryptographic algorithm should be (or encouraged to be) deprecated in your 
+       chosen protocol?
+                                          [5 marks]
+                        Page 3 of 5
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       Question 3 
+       The Irish government have announced that they will subsidise retrofitÝng homes to 
+       help meet Ireland’s climate change goals. That will involve so-called “one-stop shops” 
+       where home-owners (with staff assistance) can arrange initial surveys, loans, grants 
+       and contracting the many different kinds of service providers to e.g. improve 
+       insulation, install solar panels, and carry out other works that improve the home’s 
+       energy efÏciency. You are part of the team designing a web-based system to support 
+       all these functions as well as typical administrative functions for the one-stop shops 
+       (e.g. adding new employees, registering contractors, handling work rosters etc.). There 
+       are planned to be approximately 30 one-stop shops around the country.
+       (a) Outline a design for the overall system (include a network diagram), and state the 
+       security and privacy requirements the overall system must meet. Note that this part of 
+       your answer should only discuss security and privacy requirements and not describe 
+       how to meet those requirements.
+                                          [25 marks]
+       (b) Describe, in detail, the security and privacy mechanisms you would propose for the 
+       system to meet the requirements from part (a).
+                                          [10 marks]
+       (c) How might home-owners and contractors potentially collude to abuse the system? 
+       How would you recommend mitigating such risks?
+                                          [5 marks]
+                        Page 4 of 5
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       Question 4 
+       (a) Describe the Internet e-mail architecture and ecosystem, with an emphasis on the 
+       security and privacy issues that arise.
+                                          [20 marks]
+       (b) Describe three ways in which privacy related laws and regulations (e.g. GDPR) 
+       affect the e-mail ecosystem.
+                                          [10 marks]
+       (c) Describe two significant barriers to the widespread use of end-to-end e-mail 
+       security, and explain how those could be addressed over time.
+                                          [10 marks]
+                        Page 5 of 5
+              © Trinity College Dublin, The University of Dublin 2022

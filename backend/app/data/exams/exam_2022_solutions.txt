@@ -1,0 +1,227 @@
+                                                      Paper Code
+                                                                                                                                          
+                                                             Faculty of Engineering, Mathematics and Science
+                                                                      School of Computer Science & Statistics
+                                                      MSc in Computer Science                               Hilary Term 2022        Year 1
+                                                                                                                    
+                                                              Security of Networks and Distributed Systems
+                                                                                       CS7NS5/CSU44032
+                                     EXAM SOLUTION NOTES
+                                         XX May 2020                                          LOCATION                                              09.30 – 11.30
+                                                                                       Dr. Stephen Farrell
+                           Instructions to Candidates:
+                           Attempt three questions.  All questions carry equal marks (40 each).
+                           You may not start this examination until you are instructed to do so by the invigilator.
+                           Materials Permitted for this examination:
+                           N/A
+                           Exam questions are in bold Calibiri, like this.
+                           Solution notes are in Courier New, like this. 
+                                             Paper Code
+       Question 1
+       Many people are in the process of returning to the ofÏce, or forms of hybrid working 
+       from home and ofÏce. A software business has approximately 1000 employees 
+       across   three   locations:   Dublin,   London   and   San   Francisco.   The   company   are 
+       concerned about risks associated with the new situation, given that the switch in 
+       2020 to working-from-home was done in emergency mode, and there may be new 
+       risks associated with hybrid modes of working. They therefore contract with you to 
+       carry out a risk analysis to help them manage the ongoing transition.
+       (a)  Describe the process you would use to carry out this task (note: this part of the 
+       question asks about process, not the specific risks associated with hybrid working).
+                                          [15 marks]
+       The student should describe a process of identifying assets 
+       and risks,  classifying them in terms of impact and 
+       probability of occurrence, e.g. with High/Medium/Low scores 
+       for each, and assigning an overall (partial) order to the 
+       list. Normally, one then iterates, designing a mitigation 
+       for the most imporant item on the list, and then re-doing 
+       the analysis as necessary (since one mitigation may affect 
+       the probability of other risks or may introduce other 
+       risks). In practice, the process terminates when the 
+       available effort is expended. In this case, interviewing 
+       employees to establish the range of existing home setups 
+       would seem good to include. Similarly, it would make sense 
+       to try establish the extent to which better-planned 
+       security setups have been deployed in the two years since 
+       the initial emergency move to home-working. Any answer that 
+       captures most of this is fine, as are descriptions of 
+       equally good alternative processes.
+       Up to 10 marks for describing a reasonable process, 5 more 
+       for overall goodness.
+       (b) Describe three significant risks specific to hybrid working that the company face, 
+       including   their   potential   impact   and   likelihood   of   occurrence,   and   outline 
+       countermeasures you would recommend that the company ought apply.
+                                          [20 marks]
+       Up to 5 marks per risk, with 5 for overall goodness.
+       The risks described should be specific to hybrid working. 
+       It’s ok if those risks are organisational or technical.
+                        Page 2 of 8
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       - hybrid working may badly affect co-operation as having 
+       some people on-site and others at home could lead to 
+       inequalitry and unhappiness
+       - individual team security and privacy policies will need 
+       to specifically consider hybrid working whereas previously 
+       there was a more level playing field (all @ home or all in 
+       the office)
+       - in-office devices are likely to have missed updates over 
+       the last two years (and take considerable time to update, 
+       if in-house IT don’t look after ‘em, which is likely)
+       - hybrid working may icrease the probability of work 
+       activities being done in the home that ought be done in the 
+       office (e.g. some calls, documents/code taken outside corp 
+       n/w) – while that was inevitable during wfh times, in 
+       hybrid mode it’s likely some activities should only take 
+       place back on the corp n/w again
+       - DPOs/regulators may have been willing to overlook issues 
+       with wfm in emergency mode, but may be stricter with hybrid 
+       setups – this could lead to difficulty e.g. if customer PII 
+       was regularly processed @ home during wfh.
+       - hybrid working is likely to increase the probability that 
+       internal split-horizon names leak
+       - More examples at: 
+       https://cltc.berkeley.edu/wp-content/uploads/2021/12/Securi
+       ty_Privacy_and_Hybrid_Work.pdf 
+       (c)  What specific kinds of security and privacy training to handle this hybrid situation 
+       would you recommend for technical (e.g. programmers) and non-technical (e.g. 
+       sales) employees and why?
+                                          [5 marks]
+       Mention of sensible training that could work for either is 
+       ok, but better if specific, as asked. For techhies, perhaps 
+       training in HOWTO do code review when some people are 
+       remote, for sales, HOWTO ensure leads and similar data sets 
+       are not vulnerable to accidental loss/leak. Straight marks 
+       from 5.
+                        Page 3 of 8
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       Question 2
+       (a) For any real Internet key exchange protocol (e.g. TLS, IPsec, or Kerberos) describe 
+       the key management and application data protection aspects of the protocol in 
+       detail. Describe how your chosen protocol supports cryptographic algorithm agility.
+       Your answer may describe any widely used version of your chosen protocol, but you 
+       must explicitly state which version. 
+                                          [25 marks]
+       Marks-from-15 for a good description of the scheme, with 
+       e.g. the TLS handshake and application layer properly 
+       described. 5 marks for describing basic crypto agility 
+       (ciphersuites etc.) and 5 for additional goodness (e.g. 
+       covering extensions/tickets etc).
+       (b) What problems (e.g. caused by key sizes) would you expect to see should current 
+       candidate post-quantum algorithms be integrated into your chosen protocol?
+                                          [10 marks]
+       5 marks for describing properties of PQ algs (key/KEM/sig 
+       sizes, runtimes, relative immaturity). 5 marks for covering 
+       hybrid proposals and possible effects on PKI.
+       (c) What criteria would you suggest ought be required to be met before use of an 
+       existing cryptographic algorithm should be (encouraged to be) deprecated in your 
+       chosen protocol?
+                                          [5 marks]
+       Straight marks-from-5: alg looking weak, near-ubiquitous 
+       availability of a better alg, lack of significant (1%+) set 
+       of deployments that are fixed on the to-be-deprecated alg.
+                        Page 4 of 8
+              © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+       Question 3 
+       The Irish government have announced that they will subsidise retrofitÝng homes to 
+       help meet Ireland’s climate change goals. That will involve so-called “one-stop 
+       shops” where home-owners (with staff assistance) can arrange initial surveys, loans, 
+       grants and contracting the many different kinds of service providers to e.g. improve 
+       insulation, install solar panels, and carry out other works that improve the home’s 
+       energy efÏciency. You are part of the team designing a web-based system to support 
+       all these functions as well as typical administrative functions for the one-stop shops 
+       (e.g. adding new employees, registering contractors, handling work rosters etc.). 
+       There are planned to be approximately 30 one-stop shops around the country.
+       (a) Outline a design for the overall system (include a network diagram), and state the 
+       security and privacy requirements the overall system must meet. Note that this part 
+       of your answer should only discuss security and privacy requirements and not 
+       describe how to meet those requirements.
+                                          [25 marks]
+       10 marks for overall design, n/w diagram; 10 marks for 
+       more obvious requirements identified 5 more for overall 
+       goodness. Basically an obvious email/IM/web-based system 
+       but with ability to locally add contractors and do all the 
+       stuff required for grant management. Requirements are the 
+       usual ones too (confid, auth, authz, audit, backup). 
+       Including incident-handling plans is good. Messaging needs 
+       mail and IM solutions, also on mobile, likely via apps. 
+       Probable roles would include, devops, sysadmin, homeowner, 
+       store-staff, store-manager, service-provider, auditor etc 
+       and authorization requirements can be stated accordingly.
+       As   usual   some   students   will   mix   up   requirements   & 
+       implementation/mechanisms (i.e. parts (a) & (b)) but I’ll 
+       be lenient on that.
+       (b) Describe, in detail, the security and privacy mechanisms you would propose for 
+       the system to meet the requirements from part (a).
+                                          [10 marks]
+       Marks from 6 for hitting the obvious points, with 4 more 
+       for inclusion of less obvious things like:
+       - New system => no legacy => only support “best” security 
+       setup (unless some e.g. browser needs less, but not that 
+       likely)
+       - 2FA mandatory for some roles (admins & auditors) and 
+                        Page 5 of 8
+              © Trinity College Dublin, The University of Dublin 2022
+                                                                                         Paper Code
+              optional for others
+              - Ransomware insurance/incident-handling planning
+                                                           rd
+              - Bug bounties via some credible 3  party service (e.g. 
+              hackerone)
+                                                                           rd
+              - Code-reviews esp for mobile apps and their 3  party libs
+              - Intrusion detection systems and linkage to national CERT 
+              (NCSC in Ireland’s case)
+              (c)  How might home-owners and contractors potentially collude to abuse the 
+              system? How would you recommend mitigating such risks?
+                                                                                    [5 marks]
+              Straight marks from 5, with more marks for sneakier 
+              collusion and/or cleverer mitigations. Probably the best 
+              schemes will involve pretending to own someone else’s home 
+              (or rental). One could imagine a whole-of-area setup where 
+              lots of service providers and homeowners are colluding also 
+              with store operator. Audit is the main mitigation in most 
+              cases, likely needing to include manual spot-checks.
+                                                Page 6 of 8
+                            © Trinity College Dublin, The University of Dublin 2022
+                                                                Paper Code
+          Question 4 
+          (a) Describe the Internet e-mail architecture and ecosystem, with an emphasis on the 
+          security and privacy issues that arise.
+                                                           [20 marks]
+          10 marks for a good job on the more architectural aspects, 
+          another 10 for more pragmatic things (antispam etc). 
+          RFC5598 describes a bunch of the architectural  entities 
+          (MUA, MSA etc.) and protocols (SMTP, IMAP, etc.) involved. 
+          Each protocol has options for using TLS sensibly that 
+          should be described. Spam and malware etc. can be described 
+          either in terms of the problems or common mitigations. More 
+          marks if less obvious issues well-covered (e.g. spear-
+          phising, centralisation of MSPs etc).
+          (b) Describe three ways in which privacy related laws and regulations (e.g. GDPR) 
+          affect the e-mail ecosystem.
+                                                           [10 marks]
+          3 marks each plus one for luck. 
+          - email list managers and bulk mailers need to ensure 
+          permission/consent has been granted or will be in violation 
+          of GDPR
+          - MS operators likely need to move to adopt 2FA as 
+          otherwise they’d be accused of not adopting best practices 
+          if the MS content leaks
+          -   conformant   mailing   lists   need   to   provide   a   real 
+          unsubscribe optional
+          - embedding pixels to track opening has probably always 
+          breached GDPR, that fact is becoming accepted recently
+          - MSPs might adopt a “sovereign” approach where they try 
+          keep all instances in one jurisdiction 
+          (c) Describe two significant barriers to the widespread use of end-to-end e-mail 
+          security, and say how those could be addressed over time.
+                                                           [10 marks]
+          That’s all on slide 57 of [1]. Straight 5 marks for each.
+          [1] https://down.dsg.cs.tcd.ie/cs7053/lectures/06-protocols.pdf
+                                   Page 7 of 8
+                    © Trinity College Dublin, The University of Dublin 2022
+                                             Paper Code
+                        Page 8 of 8
+              © Trinity College Dublin, The University of Dublin 2022

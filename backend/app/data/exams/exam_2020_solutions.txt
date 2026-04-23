@@ -1,0 +1,289 @@
+                      Paper Code
+                                                        
+                  Faculty of Engineering, Mathematics and Science
+                       School of Computer Science & Statistics
+           MSc in Computer Science  Hilary Term 2020             Year 1
+                                              
+                 EXAM SOLUTION 
+                                NOTES
+                   Security of Networks and Distributed Systems
+                                  CS7NS5/CSU44032
+           XX April 2020              LOCATION              09.30 – 11.30
+                                 Dr. Stephen Farrell
+           Instructions to Candidates:
+           Attempt three questions.  All questions carry equal marks.
+           You may not start this examination until you are instructed to do so 
+           by the invigilator.
+           Materials Permitted for this examination:
+           N/A
+           Exam questions are in bold Calibiri, like this.
+           Solution notes are in Courier New, like this. 
+                                           Paper Code
+       Question 1.
+       As part of a due-diligence exercise, you are hired to do a risk 
+       analysis by a primarily online travel agency who are acquiring 
+       a   competitor   in   a   market   dramatically,   but   hopefully 
+       temporarily, shrinking due to the  COVID19  pandemic. The 
+       targets for your analysis are the online booking systems 
+       currently deployed by the company being acquired. New risks 
+       that may be created due to the merger are in scope, as well 
+       as an evaluation of the risks associated with the to-be-
+       deployed company’s existing systems. The finances and other 
+       general business issues related to the acquisition are handled 
+       by others and need not be part of your risk analysis.
+       (a)   Describe the risk analysis process you would follow in 
+       order to assist the acquiring company. (Note – this part of the 
+       answer   is   about  process,   not   the   details   of   technical 
+       mechanisms for web-site security.)
+                                        [10 marks]
+       The student should describe a process of identifying risks, 
+       classifying them in terms of impact and probability of 
+       occurrence, e.g. with High/Medium/Low scores for each, and 
+       assigning an overall (partial) order to the list. Normally, 
+       one then iterates, designing a mitigation for the most 
+       imporant item on the list, and then re-doing the analysis 
+       as necessary (since one mitigation may affect the 
+       probability of other risks or may introduce other risks). 
+       In practice, the process terminates when the available 
+       effort is expended. In this case, time is likely to be 
+       tight during an acquisition and we’ll not be implementing 
+       the mitigations but really just costing them. In theory 
+       some other form of termination might be described. Any 
+       answer that captures most of this is fine.
+       In addition to the usual process above, students might 
+       include: interviews of staff in to-be-acquired (TBA) 
+       company, maybe a pentest, analysis of how these systems 
+       match those in the acquiring company.
+       (b) Describe the most relevant risks (at least 3) you see in 
+       this scenario, including their potential impact and likelihood 
+       of occurrence, and outline the countermeasures you would 
+       recommend that the acquiring company ought implement or 
+       deploy to mitigate those risks. 
+                       Page 2 of 10
+          © Trinity College Dublin, The University of Dublin 2020
+                                                                                              Paper Code
+                                                                                       [25 marks]
+               The student should take proper account of the context – 
+               that these are existing systems and the lack of time. The 
+               main point is to describe a reasonable set of threats and 
+               potential costs/mitigations that approximates what might 
+               really happen. 
+               Risks should be described including estimates of impact and 
+               probability of occurrence and they ought concentrate on the 
+               more significant of those. Impact and probability can take 
+               any value without losing marks, but for something odd (e.g. 
+               if they considered lack of time to test low impact) more 
+               justification is needed. If the impact/probability are 
+               fairly obviously right, less needs to be said. Marking is 
+               out of 7 points for each good one and with 4 more for 
+               overall goodness. Possible risks would include:
+                     Potential for admins/coders (esp to-be-fired people) 
+                      to add backdoors or bork systems (but see part (c) – 
+                      repeating stuff leads to less marks)
+                     Systems from TBA might not scale sufficiently or might 
+                      not match technical needs post-acquisition
+                     TBA might have breached OSS license terms or someone 
+                      else’s IPR
+                     TBA might be in breach of some regulation (e.g. GDPR 
+                      if TBA aren’t an EU-oriented company).
+                     Incomplete analysis due to lack of time.
+                     Usual web things: DDoS, injection, CSRF... probably 
+                      wanna pentest ‘em.
+                     Usual online things: server updates,... moar pentest.
+                     Risk of mismatch preventing sensible post-acquisition 
+                      merges of systems (over time) – chances are one 
+                      wouldn’t want to maintain two different systems in the 
+                      travel biz
+               (c) It is often the case that the jobs or roles of systems 
+               administrators   in   the   to-be-acquired   company   undergo 
+               significant change, up to and frequently including job losses. 
+               How would you recommend the acquiring company deal with 
+                                                   Page 3 of 10
+                    © Trinity College Dublin, The University of Dublin 2020
+                                                        Paper Code
+         the risk of misbehaviour by such staff in the to-be-acquired 
+         company?
+         Main thing is to check the TBA systems have backups in 
+         place so one could recover if this happens. Maybe ensure 
+         there’s a (possibly special) backup made just before the 
+         potential acquisition becomes known to TBA folks. Maybe put 
+         in place extra system monitoring post-acquisition. Maybe 
+         put some fairly trusted people from acquiring company in 
+         place as sysadmins ASAP. Acquirer does have to trust 
+         someone in TBA to not misbehave (e.g. head of engineering 
+         in this case maybe). One idea might be for that person to 
+         claim a big audit is needed for some spurious reason to get 
+         TBA employees to produce stuff for the analysis without 
+         giving the game away immediately. Or, if being evil: just 
+         fire the lot of them on day1!
+                                                     [5 marks]
+                              Page 4 of 10
+            © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Question 2. 
+       (a) For any real Internet key exchange protocol (e.g. TLS, 
+       IPsec,   or   Kerberos)   describe   the   key   management   and 
+       application data protection aspects of the protocol in detail. 
+       Describe how your chosen protocol handles cryptographic 
+       agility   and   how   that   might   affect   the   evolution   of 
+       implementations and deployments over time.
+       Your answer may describe any widely used version of your 
+       chosen protocol, but you need to explicitly state which 
+       version you are describing. 
+       Marks-from-15 for a good description of the scheme, with 
+       e.g. the TLS handshake and application layer properly 
+       described. 5 marks for describing effects of APIs, e.g 0RTT 
+       early-data issues, private key mgmt/HSMs, even simple tings 
+       like threading.
+                                        [20 marks]
+       (b) Describe how some application uses your chosen protocol 
+       highlighting   long-term   key   management and provisioning 
+       issues. (For example you might describe how the web uses 
+       TLS, or how SMTP uses STARTTLS.)  Include details of any 
+       changes to that application that were required to integrate 
+       with your chosen key exchange protocol. What security 
+       services does your chosen key exchange protocol enable for 
+       that application?
+                                        [15 marks]
+       If one took the web, usual things: html with href for 
+       https/443 vs http/80, 30x handling, HSTS, CT, HPKP, SOP and 
+       “secure” cookies, CONNECT proxying, browser cert GUI, TLS 
+       client auth in browser. Server key gen and ACME/certbot, 
+       web server configs (e.g. turn on/off TLS versions/algs). 
+       Passing on TLS parameters to web applications (PHP/Python 
+       etc).
+       (c) For your chosen protocol, what guidance would you offer 
+       today to an implementer concerned about attacks based on 
+       quantum computing?
+                                        [5 marks]
+                       Page 5 of 10
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Reasonable people can disagree here, so various good 
+       answers are possible. If one is concerned about long-term 
+       (30 year) confidentiality then one might want to mix in a PQ 
+       alg into the TLS key exchange. If systems allowed it, 
+       mixing in an AES256 PSK would be fine too. If concerned 
+       about authentication, then you’re probably wrong:-) Main 
+       advice I’d offer almost anyone is: do nothing yet, wait for 
+       another year or two before doing anything.
+                       Page 6 of 10
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+       Question 3. 
+       You   are   tasked   to   develop   a   desktop   or   smartphone 
+       application for measuring the availability of web sites and 
+       specific URLs. The application will use a curated list of domain 
+       names and URLs and establish whether a web site at that 
+       domain is operating and whether or not the configured URLs 
+       are accessible. The application should be able to refresh the 
+       curated list and also allow users to manage their local copy of 
+       the list (e.g. allowing additions and deletions). The main 
+       purpose of the application is to measure availability over time 
+       but the application may also be used to detect censorship. If 
+       the user allows, the application will upload results to a web 
+       server at which (a version of) those will be made publicly 
+       available. The application is primarily intended for use in 
+       relatively safe environments, e.g., within a campus network 
+       or a country with a “liberal” regime and little censorship.
+       (a) Outline your overall design for such a system (include a 
+       network   diagram),   and   state   the   security   and   privacy 
+       requirements the application and overall system must meet. 
+       Note that this part of your answer should only discuss 
+       requirements   and   not   describe   how   to   meet   those 
+       requirements.
+                                        [15 marks]
+       This question is based on OONI (https://ooni.org/) so the 
+       more their answer is like that the better. OONI wasn’t 
+       covered directly in clases (be too easy if it had:-), so 
+       they should be reverse engineering those requirements, 
+       which are mostly obvious. Privacy requirements around what 
+       results to present on a web page can be non-trivial. 
+       Similarly, the curator of the list could track people by 
+       giving them different lists in various ways. Lastly, an 
+       adversary who wants to skew the web page stats (e.g. to 
+       show their site with great uptime) could run lots of 
+       instances. A censor could similarly check the list to see 
+       what’s on there and then block that.
+       (b) Describe, in detail, the security and privacy solutions you 
+       would propose to meet those requirements. 
+                       Page 7 of 10
+          © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+                                        [20 marks]
+       They should propose a way to meet each of the requirements 
+       stated. The more secure, sensible, practical and easy, the 
+       better. 
+       (c)  While your application is mainly intended for use in 
+       relatively safe environments, it could also be used by people 
+       in more challenging situations, e.g., where even checking for 
+       censored   content   is   significantly   risky.   What   additional 
+       measures would you consider to try make your application 
+       safer for such users?
+                                         [5 marks]
+       Again OONI has considered these issues to some extent. One 
+       can range from just warning the user (e.g. based on  geoip 
+       source address), not checking subsets of the list (e.g. 
+       skip the “dangerous-in-country-X” entries in the list), to 
+       attempting to hide the probe trafÏc (but that can be tricky 
+       as we don’t want to change vantage point for this), up to 
+       being able to zap the app or run the entire thing in some 
+       hidden partition/container, in case the local cops try 
+       strong-arm the user.
+                       Page 8 of 10
+          © Trinity College Dublin, The University of Dublin 2020
+                                                        Paper Code
+         Question 4. 
+         Note that, at the time of writing, the material for this 
+         had not been covered in class. Assuming that remote 
+         lectures work out ok, it should be covered before the end 
+         of semester, but given how things are it may be necessary 
+         to change this question later.
+         (a) Describe the overall architecture of WebRTC and how a 
+         voice call between two browsers works. Your description 
+         should include the networking, security and privacy features 
+         that are built-in to WebRTC.
+                                                    [20 marks]
+         A description that was even a bit like 
+         https://github.com/webrtc-security/webrtc-security.github.io/blo
+         b/master/index.md would be fine. 
+         (b) What privacy issues would arise if WebRTC were to 
+         replace all or almost all voice communications? For those you 
+         consider significant concerns, how would you suggest they be 
+         controlled or otherwise mitigated? For those where you are 
+         sanguine as to the risks, justify your position.
+                                                    [15 marks]
+         The privacy issues mainly relate to tracking who talks with 
+         whom, when and for how long. Both JS and IP based tracking 
+         is possible. There’s a range of possible scenarios here and 
+         a clever student will realise that. WebRTC might act to 
+         further centralise voice if we ended up with ~10 major 
+         service providers world-wide, or it might democratise it a 
+         lot if we ended up with thousands or more. (But the same 
+         goes for STUN/TURN servers as well of course.) OTOH, with 
+         thousands, the chances of using a dodgy service provider 
+         for one or more calls increases a lot. There will 
+         eventually be something like a WebRTC/Tor but that’s not 
+         there today. A separate privacy issue is that the browser 
+         permission dialog being sticky allows an origin to mess 
+         about on the browser user in ways that (I think) don’t make 
+         sense for the user, but that browser makers do like.
+         (c) If you were a criminal, what kinds of fraud would you 
+         attempt using your own WebRTC services? How might you 
+         attempt to avoid being caught?
+                               Page 9 of 10
+            © Trinity College Dublin, The University of Dublin 2020
+                                           Paper Code
+                                         [5 marks]
+       Almost all kinds of telephone fraud execept direct premium 
+       rate trickery could use WebRTC, so picking almost anything 
+       is fine. Likely fraud initiated with a spam mail. To hide: 
+       use a hacked web server to host your JS. And probably abuse 
+       someone else’s STUN/TURN servers. But be flexible in how you 
+       do that or you’ll be more easily caught, so migrate your JS 
+       from place to place as much as you can and vary your spam 
+       campaigns and rotate who’s STUN/TURN you’re using. One 
+       thing WebRTC might enable is more ad fraud while you’ve 
+       lured someone into making a call.
+                       Page 10 of 10
+          © Trinity College Dublin, The University of Dublin 2020
