@@ -18,8 +18,8 @@ export const TOPIC_MEDIA = {
   // ── Q2: TLS / Protocols ───────────────────────────────────────────────────
   "tls13-handshake":    { videoUrl: `${MEDIA}/materials/Unpacking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/TLS%20Audio%201.m4a` },
   "tls13-key-schedule": { videoUrl: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
-  "tls13-record-layer": { videoUrl: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
-  "forward-secrecy":    { videoUrl: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`,            audioUrl: `${MEDIA}/materials/Why_Standard_Primes_and_Firewalls_Fail.m4a` },
+  "tls13-record-layer": { videoUrl: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          audioUrl: `${MEDIA}/materials/Why_Standard_Primes_and_Firewalls_Fail.m4a` },
+  "forward-secrecy":    { videoUrl: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`,            audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
   "tls-attacks":        { videoUrl: `${MEDIA}/materials/Attacks%20on%20TLS.mp4`,                      audioUrl: `${MEDIA}/materials/Anatomy%20of%20BEAST%20Crime%20Heartbleed%20DROWN.m4a` },
   "tls-dos":            { videoUrl: `${MEDIA}/materials/Defending_TLS__The_DoS_Threat.mp4`,           audioUrl: `${MEDIA}/materials/Why_security_tools_break_your_encryption.m4a` },
   "pqc-tls":            { videoUrl: `${MEDIA}/materials/Securing%20TLS%20for%20Quantum%20Future.mp4`, audioUrl: `${MEDIA}/materials/Securing%20TLS%20Against%20Quantum%20Computers.m4a` },
