@@ -118,10 +118,10 @@ class MockAttempt(Base):
     __tablename__ = "mock_attempts"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    question_id: Mapped[int] = mapped_column(ForeignKey("questions.id"))
+    question_id: Mapped[int] = mapped_column(Integer)
     answer_text: Mapped[str] = mapped_column(Text)
     score: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     feedback: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(20), default="pending")
     attempted_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     user: Mapped["User"] = relationship(back_populates="attempts")
-    question: Mapped["Question"] = relationship(back_populates="attempts")

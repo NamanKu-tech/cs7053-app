@@ -3,6 +3,9 @@ import client from "./client"
 export const gradeAnswer = (question_id, answer_text) =>
   client.post("/mock/grade", { question_id, answer_text }).then(r => r.data)
 
+export const getAttempt = (attempt_id) =>
+  client.get(`/mock/attempts/${attempt_id}`).then(r => r.data)
+
 export const getHistory = (question_id) =>
   client.get(`/mock/history/${question_id}`).then(r => r.data)
 

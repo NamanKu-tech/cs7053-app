@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { gradeAnswer, getHistory } from "../api/mock"
+import { useState, useEffect, useRef } from "react"
+import { gradeAnswer, getAttempt, getHistory } from "../api/mock"
 
 function scoreColor(score) {
   if (score === null) return "text-gray-400"
@@ -14,6 +14,8 @@ export default function MockPractice({ questions, initialQuestion }) {
   const [result, setResult] = useState(null)
   const [history, setHistory] = useState([])
   const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const pollRef = useRef(null)
 
   useEffect(() => { if (initialQuestion) setSelected(initialQuestion) }, [initialQuestion])
 
@@ -29,12 +31,33 @@ export default function MockPractice({ questions, initialQuestion }) {
     setLoading(true)
     try {
       const res = await gradeAnswer(selected.id, answer)
-      setResult(res)
-      getHistory(selected.id).then(setHistory)
-    } finally {
+      setSubmitted(true)
+      setLoading(false)
+      pollAttempt(res.attempt_id, 5000)
+    } catch {
       setLoading(false)
     }
   }
+
+  function pollAttempt(attempt_id, delay) {
+    clearTimeout(pollRef.current)
+    pollRef.current = setTimeout(async () => {
+      try {
+        const res = await getAttempt(attempt_id)
+        if (res.status === "complete") {
+          setResult(res)
+          setSubmitted(false)
+          getHistory(selected.id).then(setHistory)
+        } else {
+          pollAttempt(attempt_id, Math.min(delay * 2, 30000))
+        }
+      } catch {
+        pollAttempt(attempt_id, Math.min(delay * 2, 30000))
+      }
+    }, delay)
+  }
+
+  useEffect(() => () => clearTimeout(pollRef.current), [])
 
   if (questions.length === 0) return (
     <p className="text-gray-500 text-sm py-8 text-center">No questions available for practice yet.</p>
@@ -71,10 +94,10 @@ export default function MockPractice({ questions, initialQuestion }) {
         {loading ? "Submitting..." : "Submit for Grading"}
       </button>
 
-      {loading && (
-        <div className="rounded-lg border border-gray-800 bg-gray-900/60 px-4 py-5 text-center space-y-1">
-          <p className="text-sm text-gray-300 font-medium">Grading your answer with Gemini...</p>
-          <p className="text-xs text-gray-500">This can take up to a minute. Please wait.</p>
+      {submitted && (
+        <div className="rounded-lg border border-amber-800/40 bg-amber-950/20 px-4 py-5 text-center space-y-1">
+          <p className="text-sm text-amber-300 font-medium">Answer submitted</p>
+          <p className="text-xs text-gray-400">Grading can take up to 10 minutes. You can navigate away — your result will appear here when ready.</p>
         </div>
       )}
 

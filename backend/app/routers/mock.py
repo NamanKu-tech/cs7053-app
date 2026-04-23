@@ -1,11 +1,12 @@
 import os
 import json
 import httpx
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy.orm import Session
+from app.database import SessionLocal
 from app.database import get_db
 from app.models import MockAttempt, ExamQuestion, Path, User
-from app.schemas import GradeRequest, GradeResponse, AttemptOut, ExamCardOut, ExamGroupOut, ExamPartOut, ExamGradeRequest, ExamGradeResponse, ExamGradeItemResult
+from app.schemas import GradeRequest, AttemptOut, ExamCardOut, ExamGroupOut, ExamPartOut, ExamGradeRequest, ExamGradeResponse, ExamGradeItemResult
 from app.auth import get_current_user
 
 router = APIRouter(prefix="/mock", tags=["mock"])
@@ -127,11 +128,36 @@ def grade_exam(body: ExamGradeRequest, db: Session = Depends(get_db), _: User = 
     return ExamGradeResponse(results=results)
 
 
-@router.post("/grade", response_model=GradeResponse)
-def grade_answer(body: GradeRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def _grade_in_background(attempt_id: int, prompt: str):
+    db = SessionLocal()
+    try:
+        attempt = db.get(MockAttempt, attempt_id)
+        if not attempt:
+            return
+        score, feedback = _call_gemini(prompt)
+        attempt.score = score
+        attempt.feedback = feedback
+        attempt.status = "complete"
+        db.commit()
+    finally:
+        db.close()
+
+
+@router.post("/grade")
+def grade_answer(body: GradeRequest, background_tasks: BackgroundTasks, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     question = db.get(ExamQuestion, body.question_id)
     if not question:
         raise HTTPException(status_code=404, detail="Question not found")
+
+    attempt = MockAttempt(
+        user_id=current_user.id,
+        question_id=body.question_id,
+        answer_text=body.answer_text,
+        status="pending",
+    )
+    db.add(attempt)
+    db.commit()
+    db.refresh(attempt)
 
     prompt = _GRADING_PROMPT.format(
         marks=question.marks,
@@ -139,18 +165,16 @@ def grade_answer(body: GradeRequest, db: Session = Depends(get_db), current_user
         sample=question.sample_answer,
         student=body.answer_text,
     )
-    score, feedback = _call_gemini(prompt)
+    background_tasks.add_task(_grade_in_background, attempt.id, prompt)
+    return {"attempt_id": attempt.id, "status": "pending"}
 
-    attempt = MockAttempt(
-        user_id=current_user.id,
-        question_id=body.question_id,
-        answer_text=body.answer_text,
-        score=score,
-        feedback=feedback,
-    )
-    db.add(attempt)
-    db.commit()
-    return GradeResponse(score=score, feedback=feedback)
+
+@router.get("/attempts/{attempt_id}")
+def get_attempt(attempt_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    attempt = db.get(MockAttempt, attempt_id)
+    if not attempt or attempt.user_id != current_user.id:
+        raise HTTPException(status_code=404, detail="Attempt not found")
+    return {"attempt_id": attempt.id, "status": attempt.status, "score": attempt.score, "feedback": attempt.feedback}
 
 
 @router.get("/history/{question_id}", response_model=list[AttemptOut])
