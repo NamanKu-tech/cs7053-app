@@ -6,14 +6,8 @@ const AuthContext = createContext(null)
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(() => localStorage.getItem("token"))
 
-  const login = useCallback(async (email, password) => {
-    const res = await client.post("/auth/login", { email, password })
-    localStorage.setItem("token", res.data.access_token)
-    setToken(res.data.access_token)
-  }, [])
-
-  const register = useCallback(async (email, password) => {
-    const res = await client.post("/auth/register", { email, password })
+  const googleLogin = useCallback(async (credential) => {
+    const res = await client.post("/auth/google", { credential })
     localStorage.setItem("token", res.data.access_token)
     setToken(res.data.access_token)
   }, [])
@@ -24,7 +18,7 @@ export function AuthProvider({ children }) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ token, login, register, logout, isAuthed: !!token }}>
+    <AuthContext.Provider value={{ token, googleLogin, logout, isAuthed: !!token }}>
       {children}
     </AuthContext.Provider>
   )
