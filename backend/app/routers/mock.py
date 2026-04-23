@@ -4,7 +4,7 @@ import httpx
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.models import Question, MockAttempt, ExamQuestion, Path, User
+from app.models import MockAttempt, ExamQuestion, Path, User
 from app.schemas import GradeRequest, GradeResponse, AttemptOut, ExamCardOut, ExamGroupOut, ExamPartOut, ExamGradeRequest, ExamGradeResponse, ExamGradeItemResult
 from app.auth import get_current_user
 
@@ -129,7 +129,7 @@ def grade_exam(body: ExamGradeRequest, db: Session = Depends(get_db), _: User = 
 
 @router.post("/grade", response_model=GradeResponse)
 def grade_answer(body: GradeRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    question = db.get(Question, body.question_id)
+    question = db.get(ExamQuestion, body.question_id)
     if not question:
         raise HTTPException(status_code=404, detail="Question not found")
 
