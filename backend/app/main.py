@@ -23,7 +23,7 @@ app = FastAPI(title="CS7053 Study App", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost"],
+    allow_origins=["http://localhost:5173", "http://localhost", "https://cs7053.citycontrol.me"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
