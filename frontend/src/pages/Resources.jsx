@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { VIDEO_EMBED_URL, PODCAST_AUDIO_URL, REFERENCE_PDFS } from "../config/resources"
+import { REFERENCE_PDFS } from "../config/resources"
 import { MATERIAL_GROUPS } from "../config/materials"
 
 const LECTURE_TOPIC_COLORS = {
@@ -41,15 +41,6 @@ const GROUP_BADGE = {
   gray:    "bg-gray-700 text-gray-200",
 }
 
-function PlaceholderBox({ icon, label, help }) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-gray-700 bg-gray-900 p-10 text-center">
-      <span className="text-4xl">{icon}</span>
-      <p className="text-gray-300 font-medium">{label}</p>
-      <p className="text-xs text-gray-500 max-w-xs">{help}</p>
-    </div>
-  )
-}
 
 function MaterialGroup({ group }) {
   const [open, setOpen] = useState(false)
@@ -113,52 +104,6 @@ export default function Resources() {
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 py-10 space-y-14">
-
-        {/* ── Video Overview ── */}
-        <section>
-          <h2 className="text-xl font-semibold mb-1">Video Overview</h2>
-          <p className="text-gray-400 text-sm mb-4">
-            High-level walkthrough — good starting point before diving into topics.
-            Configure per-topic videos in each Topic page after adding URLs to{" "}
-            <code className="text-gray-300 text-xs bg-gray-800 px-1 rounded">config/topicMedia.js</code>.
-          </p>
-          {VIDEO_EMBED_URL
-            ? <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  src={VIDEO_EMBED_URL}
-                  title="CS7053 Video Overview"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full rounded-xl border border-gray-800"
-                />
-              </div>
-            : <PlaceholderBox
-                icon="🎬"
-                label="Global video not configured"
-                help={`Set VIDEO_EMBED_URL in config/resources.js to a YouTube embed URL. Per-topic videos go in config/topicMedia.js.`}
-              />
-          }
-        </section>
-
-        {/* ── Podcast ── */}
-        <section>
-          <h2 className="text-xl font-semibold mb-1">Podcast / Audio Overview</h2>
-          <p className="text-gray-400 text-sm mb-4">
-            NotebookLM-generated audio overview. Per-topic podcasts appear in each Topic page.
-          </p>
-          {PODCAST_AUDIO_URL
-            ? <div className="rounded-xl border border-gray-800 bg-gray-900 p-6">
-                <audio controls className="w-full" src={PODCAST_AUDIO_URL}>
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            : <PlaceholderBox
-                icon="🎙"
-                label="Global podcast not configured"
-                help={`Set PODCAST_AUDIO_URL in config/resources.js to a direct .mp3 URL. Per-topic audio goes in config/topicMedia.js.`}
-              />
-          }
-        </section>
 
         {/* ── Lecture Slides ── */}
         <section>

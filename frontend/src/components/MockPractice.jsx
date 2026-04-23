@@ -68,8 +68,15 @@ export default function MockPractice({ questions, initialQuestion }) {
 
       <button onClick={handleSubmit} disabled={loading || !answer.trim()}
         className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">
-        {loading ? "Grading..." : "Submit for Grading"}
+        {loading ? "Submitting..." : "Submit for Grading"}
       </button>
+
+      {loading && (
+        <div className="rounded-lg border border-gray-800 bg-gray-900/60 px-4 py-5 text-center space-y-1">
+          <p className="text-sm text-gray-300 font-medium">Grading your answer with Gemini...</p>
+          <p className="text-xs text-gray-500">This can take up to a minute. Please wait.</p>
+        </div>
+      )}
 
       {result && (
         <div className="bg-gray-900 rounded-lg p-4 border border-gray-700">

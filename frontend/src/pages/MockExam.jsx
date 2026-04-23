@@ -87,6 +87,14 @@ export default function MockExam() {
     <div className="min-h-screen bg-gray-950 text-gray-500 flex items-center justify-center">Loading…</div>
   )
 
+  if (grading) return (
+    <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center gap-4">
+      <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      <p className="text-gray-300 font-medium">Grading your exam with Gemini...</p>
+      <p className="text-gray-500 text-sm">This can take a minute or two. Please don't close the tab.</p>
+    </div>
+  )
+
   // ── CARDS VIEW ───────────────────────────────────────────────────────────────
   if (view === "cards") {
     return (
@@ -162,7 +170,7 @@ export default function MockExam() {
               disabled={grading}
               className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-5 py-2 rounded-lg text-sm font-medium transition-colors"
             >
-              {grading ? "Grading…" : "Submit Exam"}
+              {grading ? "Grading... please wait" : "Submit Exam"}
             </button>
           </div>
         </nav>
