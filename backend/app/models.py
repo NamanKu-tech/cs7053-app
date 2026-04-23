@@ -73,7 +73,7 @@ class Question(Base):
     question_text: Mapped[str] = mapped_column(Text)
     sample_answer: Mapped[str] = mapped_column(Text)
     marks: Mapped[int] = mapped_column(Integer)
-    topic: Mapped["Topic"] = relationship(back_populates="questions")
+    topic: Mapped["Topic"] = relationship(foreign_keys=[topic_id])
 
 
 class ExamQuestion(Base):
