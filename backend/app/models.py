@@ -39,7 +39,6 @@ class Topic(Base):
     depends_on: Mapped[list] = mapped_column(JSON, default=list)
     path: Mapped["Path"] = relationship(back_populates="topics")
     notes: Mapped[list["Note"]] = relationship(back_populates="topic")
-    questions: Mapped[list["Question"]] = relationship(back_populates="topic")
     progress: Mapped[list["UserTopicProgress"]] = relationship(back_populates="topic")
     materials: Mapped[list["TopicMaterial"]] = relationship(back_populates="topic", order_by="TopicMaterial.order")
 
@@ -75,7 +74,6 @@ class Question(Base):
     sample_answer: Mapped[str] = mapped_column(Text)
     marks: Mapped[int] = mapped_column(Integer)
     topic: Mapped["Topic"] = relationship(back_populates="questions")
-    attempts: Mapped[list["MockAttempt"]] = relationship(back_populates="question")
 
 
 class ExamQuestion(Base):
@@ -125,3 +123,4 @@ class MockAttempt(Base):
     status: Mapped[str] = mapped_column(String(20), default="pending")
     attempted_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     user: Mapped["User"] = relationship(back_populates="attempts")
+
