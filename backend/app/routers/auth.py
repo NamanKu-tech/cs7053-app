@@ -31,8 +31,8 @@ def google_login(body: GoogleTokenBody, db: Session = Depends(get_db)):
             google_requests.Request(),
             GOOGLE_CLIENT_ID,
         )
-    except ValueError:
-        raise HTTPException(status_code=401, detail="Invalid Google token")
+    except ValueError as e:
+        raise HTTPException(status_code=401, detail=f"Invalid Google token: {e}")
 
     email = info.get("email", "")
     if not email.endswith("@tcd.ie"):
