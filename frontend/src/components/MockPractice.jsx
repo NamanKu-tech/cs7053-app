@@ -1,6 +1,28 @@
 import { useState, useEffect, useRef } from "react"
 import { gradeAnswer, getAttempt, getHistory } from "../api/mock"
 
+const SLIDE_MAP = {
+  Q1: [
+    { file: "01-processes.pdf",  title: "01 – Security Processes" },
+  ],
+  Q2: [
+    { file: "07-protocols.pdf",  title: "07 – Security Protocols" },
+    { file: "08-tls-problems.pdf", title: "08 – TLS Problems" },
+    { file: "09-tls13.pdf",      title: "09 – TLS 1.3" },
+    { file: "05-pqc.pdf",        title: "05 – Post-Quantum Crypto" },
+  ],
+  Q3: [
+    { file: "02-concepts.pdf",   title: "02 – Core Concepts" },
+    { file: "03-passwords.pdf",  title: "03 – Passwords" },
+    { file: "04-crypto.pdf",     title: "04 – Cryptography" },
+    { file: "06-hpke.pdf",       title: "06 – HPKE" },
+  ],
+  Q4: [
+    { file: "10-dns.pdf",        title: "10 – DNS Security" },
+    { file: "11-legal.pdf",      title: "11 – Legal & Privacy" },
+  ],
+}
+
 function scoreColor(score) {
   if (score === null || score === undefined) return "text-gray-400"
   if (score >= 7) return "text-green-400"
@@ -91,9 +113,29 @@ export default function MockPractice({ questions, initialQuestion }) {
       </div>
 
       {selected && (
-        <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-          <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Question ({selected.marks} marks)</p>
-          <p className="text-sm text-gray-200 leading-relaxed">{selected.question_text}</p>
+        <div className="space-y-3">
+          <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
+            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">Question ({selected.marks} marks)</p>
+            <p className="text-sm text-gray-200 leading-relaxed">{selected.question_text}</p>
+          </div>
+          {SLIDE_MAP[selected.exam_slot?.slice(0, 2)] && (
+            <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-800">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Relevant Lecture Slides</p>
+              <div className="flex flex-wrap gap-2">
+                {SLIDE_MAP[selected.exam_slot?.slice(0, 2)].map(s => (
+                  <a
+                    key={s.file}
+                    href={`/pdfs/${encodeURIComponent(s.file)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 bg-gray-800 hover:bg-gray-700 px-2.5 py-1.5 rounded-lg transition-colors"
+                  >
+                    📄 {s.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

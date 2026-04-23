@@ -8,6 +8,28 @@ import MockPractice from "../components/MockPractice"
 
 const PATH_TABS = ["Overview", "Mock Practice"]
 
+const SLIDE_MAP = {
+  "q1-risk-analysis": [
+    { file: "01-processes.pdf", title: "01 – Security Processes" },
+  ],
+  "q2-tls-protocols": [
+    { file: "07-protocols.pdf",   title: "07 – Security Protocols" },
+    { file: "08-tls-problems.pdf", title: "08 – TLS Problems" },
+    { file: "09-tls13.pdf",       title: "09 – TLS 1.3" },
+    { file: "05-pqc.pdf",         title: "05 – Post-Quantum Crypto" },
+  ],
+  "q3-system-design": [
+    { file: "02-concepts.pdf",  title: "02 – Core Concepts" },
+    { file: "03-passwords.pdf", title: "03 – Passwords" },
+    { file: "04-crypto.pdf",    title: "04 – Cryptography" },
+    { file: "06-hpke.pdf",      title: "06 – HPKE" },
+  ],
+  "q4-dns-dnssec": [
+    { file: "10-dns.pdf",    title: "10 – DNS Security" },
+    { file: "11-legal.pdf",  title: "11 – Legal & Privacy" },
+  ],
+}
+
 function ExamQuestion({ q, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen || false)
   const [showAnswer, setShowAnswer] = useState(false)
@@ -47,7 +69,7 @@ function ExamQuestion({ q, defaultOpen }) {
   )
 }
 
-function ExamSection({ overview }) {
+function ExamSection({ overview, slug }) {
   const [overviewOpen, setOverviewOpen] = useState(false)
   const [selectedYear, setSelectedYear] = useState(null)
 
@@ -80,6 +102,25 @@ function ExamSection({ overview }) {
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{overview.overview}</ReactMarkdown>
             </div>
           )}
+        </div>
+      )}
+
+      {SLIDE_MAP[slug]?.length > 0 && (
+        <div className="mb-4 p-3 rounded-lg border border-gray-800 bg-gray-900/40">
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Lecture Slides</p>
+          <div className="flex flex-wrap gap-2">
+            {SLIDE_MAP[slug].map(s => (
+              <a
+                key={s.file}
+                href={`/pdfs/${encodeURIComponent(s.file)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 bg-gray-800 hover:bg-gray-700 px-2.5 py-1.5 rounded-lg transition-colors"
+              >
+                📄 {s.title}
+              </a>
+            ))}
+          </div>
         </div>
       )}
 
@@ -164,7 +205,7 @@ export default function Path() {
           ? <div className="text-gray-500 text-center py-20">Loading...</div>
           : <>
               <div className={tab === "Overview" ? "" : "hidden"}>
-                {overview && <ExamSection overview={overview} />}
+                {overview && <ExamSection overview={overview} slug={slug} />}
                 <h2 className="text-sm font-semibold text-gray-300 mb-3">Topics</h2>
                 <div className="space-y-1">
                   {topics.map(t => <TopicRow key={t.slug} topic={t} onToggle={handleToggle} />)}
