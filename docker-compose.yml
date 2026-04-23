@@ -8,6 +8,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - DATABASE_URL=sqlite:///./app/data/app.db
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
     restart: unless-stopped
 
   frontend:
