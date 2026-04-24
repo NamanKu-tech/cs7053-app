@@ -37,7 +37,12 @@ export const TOPIC_MEDIA = {
   "security-requirements":    { videos: [], audioUrl: null },
   "architecture-patterns":    { videos: [], audioUrl: null },
   "authn-authz":              { videos: [{ url: "https://www.youtube.com/embed/qW361k3-BtU", title: "Taming Kerberos" }], audioUrl: null },
-  "crypto-in-systems":        { videos: [{ url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES Explained" }], audioUrl: null },
+  "crypto-in-systems":        { videos: [
+                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES Explained" },
+                            { url: "https://www.youtube.com/embed/vsXMMT2CqqE", title: "RSA" },
+                            { url: "https://www.youtube.com/embed/GSIDS_lvRv4", title: "Public Key Cryptography" },
+                            { url: "https://www.youtube.com/embed/wlSG3pEiQdc", title: "HMAC" },
+                          ], audioUrl: null },
   "audit-logging":            { videos: [], audioUrl: null },
   "attack-the-system":        { videos: [], audioUrl: null },
 
