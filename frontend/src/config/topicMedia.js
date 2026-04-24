@@ -42,6 +42,8 @@ export const TOPIC_MEDIA = {
                             { url: "https://www.youtube.com/embed/vsXMMT2CqqE", title: "RSA" },
                             { url: "https://www.youtube.com/embed/GSIDS_lvRv4", title: "Public Key Cryptography" },
                             { url: "https://www.youtube.com/embed/wlSG3pEiQdc", title: "HMAC" },
+                            { url: "https://www.youtube.com/embed/s22eJ1eVLTU", title: "What are Digital Signatures?" },
+                            { url: "https://www.youtube.com/embed/DMtFhACPnTY", title: "SHA" },
                           ], audioUrl: null },
   "audit-logging":            { videos: [], audioUrl: null },
   "attack-the-system":        { videos: [], audioUrl: null },
