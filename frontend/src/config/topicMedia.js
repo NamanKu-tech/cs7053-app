@@ -1,43 +1,47 @@
 // Per-topic video and podcast configuration.
-// videoUrl  — YouTube embed URL or relative path: "/materials/file.mp4"
+// videos    — array of { url, title }; url can be YouTube embed URL or relative path "/materials/file.mp4"
 // audioUrl  — Relative path to audio file: "/materials/file.m4a"
-// Leave as null to hide the media section for that topic.
+// Leave videos as [] or audioUrl as null to hide that media section.
 
 const MEDIA = import.meta.env.VITE_MEDIA_BASE ?? ""
 
 export const TOPIC_MEDIA = {
   // ── Q1: Risk Analysis ────────────────────────────────────────────────────
-  "risk-analysis-process":    { videoUrl: `${MEDIA}/materials/Mastering%20Risk%20Analysis.mp4`,        audioUrl: `${MEDIA}/materials/Episode%201.m4a` },
-  "identifying-assets":       { videoUrl: `${MEDIA}/materials/Constructing%20the%20Attack%20Surface.mp4`, audioUrl: `${MEDIA}/materials/Episode%202.m4a` },
-  "classifying-risks":        { videoUrl: `${MEDIA}/materials/Classifying%20Risks.mp4`,                audioUrl: `${MEDIA}/materials/Episode%203.m4a` },
-  "mitigations":              { videoUrl: `${MEDIA}/materials/Designing%20Mitigations.mp4`,            audioUrl: `${MEDIA}/materials/Episode%204.m4a` },
-  "privacy-threats":          { videoUrl: `${MEDIA}/materials/Internet%20Privacy%20Threats.mp4`,       audioUrl: `${MEDIA}/materials/Episode%205.m4a` },
-  "security-processes":       { videoUrl: `${MEDIA}/materials/Security%20and%20the%20SDLC.mp4`,        audioUrl: `${MEDIA}/materials/Episode%206.m4a` },
-  "real-incidents":           { videoUrl: `${MEDIA}/materials/Real%20Incidents.mp4`,                   audioUrl: `${MEDIA}/materials/Episode%207.m4a` },
+  "risk-analysis-process":    { videos: [{ url: `${MEDIA}/materials/Mastering%20Risk%20Analysis.mp4`,        title: "Mastering Risk Analysis" }],        audioUrl: `${MEDIA}/materials/Episode%201.m4a` },
+  "identifying-assets":       { videos: [{ url: `${MEDIA}/materials/Constructing%20the%20Attack%20Surface.mp4`, title: "Constructing the Attack Surface" }], audioUrl: `${MEDIA}/materials/Episode%202.m4a` },
+  "classifying-risks":        { videos: [{ url: `${MEDIA}/materials/Classifying%20Risks.mp4`,                title: "Classifying Risks" }],                audioUrl: `${MEDIA}/materials/Episode%203.m4a` },
+  "mitigations":              { videos: [{ url: `${MEDIA}/materials/Designing%20Mitigations.mp4`,            title: "Designing Mitigations" }],            audioUrl: `${MEDIA}/materials/Episode%204.m4a` },
+  "privacy-threats":          { videos: [{ url: `${MEDIA}/materials/Internet%20Privacy%20Threats.mp4`,       title: "Internet Privacy Threats" }],         audioUrl: `${MEDIA}/materials/Episode%205.m4a` },
+  "security-processes":       { videos: [{ url: `${MEDIA}/materials/Security%20and%20the%20SDLC.mp4`,        title: "Security and the SDLC" }],            audioUrl: `${MEDIA}/materials/Episode%206.m4a` },
+  "real-incidents":           { videos: [{ url: `${MEDIA}/materials/Real%20Incidents.mp4`,                   title: "Real Incidents" }],                   audioUrl: `${MEDIA}/materials/Episode%207.m4a` },
 
   // ── Q2: TLS / Protocols ───────────────────────────────────────────────────
-  "tls13-handshake":    { videoUrl: `${MEDIA}/materials/Unpacking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/TLS_1.3.m4a` },
-  "tls13-key-schedule": { videoUrl: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,                     audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
-  "tls13-record-layer": { videoUrl: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
-  "forward-secrecy":    { videoUrl: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`,            audioUrl: `${MEDIA}/materials/TLS%20Audio%201.m4a` },
-  "tls-attacks":        { videoUrl: `${MEDIA}/materials/Attacks%20on%20TLS.mp4`,                      audioUrl: `${MEDIA}/materials/Anatomy%20of%20BEAST%20Crime%20Heartbleed%20DROWN.m4a` },
-  "tls-dos":            { videoUrl: `${MEDIA}/materials/Defending_TLS__The_DoS_Threat.mp4`,           audioUrl: `${MEDIA}/materials/Why_security_tools_break_your_encryption.m4a` },
-  "pqc-tls":            { videoUrl: `${MEDIA}/materials/Securing%20TLS%20for%20Quantum%20Future.mp4`, audioUrl: `${MEDIA}/materials/Securing%20TLS%20Against%20Quantum%20Computers.m4a` },
-  "large-scale-tls":    { videoUrl: `${MEDIA}/materials/TLS%20at%20Scale%20The%20Real%20World.mp4`,   audioUrl: null },
+  "tls13-handshake":    { videos: [
+                            { url: `${MEDIA}/materials/Unpacking%20TLS%201.mp4`,       title: "Unpacking TLS 1.3" },
+                            { url: "https://www.youtube.com/embed/0TLDTodL7Lc",        title: "What is TLS/SSL?" },
+                            { url: "https://www.youtube.com/embed/86cQJ0MMses",         title: "TLS Handshake" },
+                          ], audioUrl: `${MEDIA}/materials/TLS_1.3.m4a` },
+  "tls13-key-schedule": { videos: [{ url: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,                     title: "Unlocking TLS 1.3" }],              audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
+  "tls13-record-layer": { videos: [{ url: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          title: "TLS Record Layer" }],               audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
+  "forward-secrecy":    { videos: [{ url: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`,            title: "Forward Secrecy in TLS" }],         audioUrl: `${MEDIA}/materials/TLS%20Audio%201.m4a` },
+  "tls-attacks":        { videos: [{ url: `${MEDIA}/materials/Attacks%20on%20TLS.mp4`,                      title: "Attacks on TLS" }],                 audioUrl: `${MEDIA}/materials/Anatomy%20of%20BEAST%20Crime%20Heartbleed%20DROWN.m4a` },
+  "tls-dos":            { videos: [{ url: `${MEDIA}/materials/Defending_TLS__The_DoS_Threat.mp4`,           title: "Defending TLS: The DoS Threat" }],  audioUrl: `${MEDIA}/materials/Why_security_tools_break_your_encryption.m4a` },
+  "pqc-tls":            { videos: [{ url: `${MEDIA}/materials/Securing%20TLS%20for%20Quantum%20Future.mp4`, title: "Securing TLS for Quantum Future" }], audioUrl: `${MEDIA}/materials/Securing%20TLS%20Against%20Quantum%20Computers.m4a` },
+  "large-scale-tls":    { videos: [{ url: `${MEDIA}/materials/TLS%20at%20Scale%20The%20Real%20World.mp4`,   title: "TLS at Scale" }],                   audioUrl: null },
 
   // ── Q3: System Design ─────────────────────────────────────────────────────
-  "security-requirements":    { videoUrl: null, audioUrl: null },
-  "architecture-patterns":    { videoUrl: null, audioUrl: null },
-  "authn-authz":              { videoUrl: null, audioUrl: null },
-  "crypto-in-systems":        { videoUrl: null, audioUrl: null },
-  "audit-logging":            { videoUrl: null, audioUrl: null },
-  "attack-the-system":        { videoUrl: null, audioUrl: null },
+  "security-requirements":    { videos: [], audioUrl: null },
+  "architecture-patterns":    { videos: [], audioUrl: null },
+  "authn-authz":              { videos: [], audioUrl: null },
+  "crypto-in-systems":        { videos: [], audioUrl: null },
+  "audit-logging":            { videos: [], audioUrl: null },
+  "attack-the-system":        { videos: [], audioUrl: null },
 
   // ── Q4: DNS / DNSSEC ──────────────────────────────────────────────────────
-  "dns-basics":               { videoUrl: null, audioUrl: null },
-  "dnssec-records":           { videoUrl: null, audioUrl: null },
-  "dnssec-key-hierarchy":     { videoUrl: null, audioUrl: null },
-  "dnssec-validation":        { videoUrl: null, audioUrl: null },
-  "doh-dot-privacy":          { videoUrl: null, audioUrl: null },
-  "email-security":           { videoUrl: null, audioUrl: null },
+  "dns-basics":               { videos: [], audioUrl: null },
+  "dnssec-records":           { videos: [], audioUrl: null },
+  "dnssec-key-hierarchy":     { videos: [], audioUrl: null },
+  "dnssec-validation":        { videos: [], audioUrl: null },
+  "doh-dot-privacy":          { videos: [], audioUrl: null },
+  "email-security":           { videos: [], audioUrl: null },
 }

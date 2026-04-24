@@ -7,6 +7,59 @@ import { TOPIC_MEDIA } from "../config/topicMedia"
 
 const TABS = ["Notes", "Materials", "Video", "Podcast"]
 
+function VideoPlayer({ videos, slug }) {
+  const [idx, setIdx] = useState(0)
+
+  useEffect(() => { setIdx(0) }, [slug])
+
+  if (videos.length === 0) return (
+    <div className="flex flex-col items-center justify-center py-24 text-gray-600">
+      <span className="text-4xl mb-3">▶</span>
+      <p className="text-sm">No video added yet.</p>
+    </div>
+  )
+
+  const current = videos[idx]
+  const isYouTube = current.url.includes("youtube") || current.url.includes("youtu.be")
+
+  return (
+    <div className="space-y-3">
+      {videos.length > 1 && (
+        <div className="flex flex-wrap gap-2">
+          {videos.map((v, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors
+                ${i === idx ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:text-gray-200"}`}
+            >
+              {v.title || `Video ${i + 1}`}
+            </button>
+          ))}
+        </div>
+      )}
+      {isYouTube ? (
+        <div className="relative w-full rounded-xl overflow-hidden border border-gray-800" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            key={current.url}
+            src={current.url}
+            title={current.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+          />
+        </div>
+      ) : (
+        <div className="rounded-xl overflow-hidden border border-gray-800 bg-black">
+          <video key={current.url} controls className="w-full" src={current.url}>
+            Your browser does not support the video element.
+          </video>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function Topic() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -80,39 +133,7 @@ export default function Topic() {
                 <MaterialsRoadmap slug={slug} initialMaterials={materials} initialProgress={materialsProgress} />
               </div>
               <div className={tab === "Video" ? "" : "hidden"}>
-                {TOPIC_MEDIA[slug]?.videoUrl
-                  ? (
-                    TOPIC_MEDIA[slug].videoUrl.includes("youtube") || TOPIC_MEDIA[slug].videoUrl.includes("youtu.be")
-                      ? (
-                        <div className="relative w-full rounded-xl overflow-hidden border border-gray-800" style={{ paddingBottom: "56.25%" }}>
-                          <iframe
-                            src={TOPIC_MEDIA[slug].videoUrl}
-                            title={`${slug} video`}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="absolute inset-0 w-full h-full"
-                          />
-                        </div>
-                      )
-                      : (
-                        <div className="rounded-xl overflow-hidden border border-gray-800 bg-black">
-                          <video
-                            controls
-                            className="w-full"
-                            src={TOPIC_MEDIA[slug].videoUrl}
-                          >
-                            Your browser does not support the video element.
-                          </video>
-                        </div>
-                      )
-                  )
-                  : (
-                    <div className="flex flex-col items-center justify-center py-24 text-gray-600">
-                      <span className="text-4xl mb-3">▶</span>
-                      <p className="text-sm">No video added yet.</p>
-                    </div>
-                  )
-                }
+                <VideoPlayer videos={TOPIC_MEDIA[slug]?.videos ?? []} slug={slug} />
               </div>
               <div className={tab === "Podcast" ? "" : "hidden"}>
                 {TOPIC_MEDIA[slug]?.audioUrl
