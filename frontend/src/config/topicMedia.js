@@ -22,8 +22,14 @@ export const TOPIC_MEDIA = {
                             { url: "https://www.youtube.com/embed/86cQJ0MMses",         title: "TLS Handshake" },
                             { url: "https://www.youtube.com/embed/s22eJ1eVLTU",         title: "What are Digital Signatures?" },
                           ], audioUrl: `${MEDIA}/materials/TLS_1.3.m4a` },
-  "tls13-key-schedule": { videos: [{ url: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,                     title: "Unlocking TLS 1.3" }],              audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
-  "tls13-record-layer": { videos: [{ url: `${MEDIA}/materials/TLS%20Video%201.mp4`,                          title: "TLS Record Layer" }],               audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
+  "tls13-key-schedule": { videos: [
+                            { url: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,       title: "Unlocking TLS 1.3" },
+                            { url: "https://www.youtube.com/embed/wlSG3pEiQdc",         title: "HMAC" },
+                          ], audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
+  "tls13-record-layer": { videos: [
+                            { url: `${MEDIA}/materials/TLS%20Video%201.mp4`,            title: "TLS Record Layer" },
+                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E",         title: "AES / SP Networks" },
+                          ], audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
   "forward-secrecy":    { videos: [
                             { url: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`, title: "Forward Secrecy in TLS" },
                             { url: "https://www.youtube.com/embed/NmM9HA2MQGI",           title: "Diffie-Hellman" },
@@ -38,7 +44,7 @@ export const TOPIC_MEDIA = {
   "architecture-patterns":    { videos: [], audioUrl: null },
   "authn-authz":              { videos: [{ url: "https://www.youtube.com/embed/qW361k3-BtU", title: "Taming Kerberos" }], audioUrl: null },
   "crypto-in-systems":        { videos: [
-                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES Explained" },
+                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES / SP Networks" },
                             { url: "https://www.youtube.com/embed/vsXMMT2CqqE", title: "RSA" },
                             { url: "https://www.youtube.com/embed/GSIDS_lvRv4", title: "Public Key Cryptography" },
                             { url: "https://www.youtube.com/embed/wlSG3pEiQdc", title: "HMAC" },
