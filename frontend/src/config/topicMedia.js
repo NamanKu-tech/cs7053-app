@@ -28,7 +28,8 @@ export const TOPIC_MEDIA = {
                           ], audioUrl: `${MEDIA}/materials/The%20TLS%201.m4a` },
   "tls13-record-layer": { videos: [
                             { url: `${MEDIA}/materials/TLS%20Video%201.mp4`,            title: "TLS Record Layer" },
-                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E",         title: "AES / SP Networks" },
+                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E",         title: "AES" },
+                            { url: "https://www.youtube.com/embed/DLjzI5dX8jc",         title: "SP Networks" },
                           ], audioUrl: `${MEDIA}/materials/TLS%201.m4a` },
   "forward-secrecy":    { videos: [
                             { url: `${MEDIA}/materials/Forward%20Secrecy%20in%20TLS.mp4`, title: "Forward Secrecy in TLS" },
@@ -44,7 +45,8 @@ export const TOPIC_MEDIA = {
   "architecture-patterns":    { videos: [], audioUrl: null },
   "authn-authz":              { videos: [{ url: "https://www.youtube.com/embed/qW361k3-BtU", title: "Taming Kerberos" }], audioUrl: null },
   "crypto-in-systems":        { videos: [
-                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES / SP Networks" },
+                            { url: "https://www.youtube.com/embed/O4xNJsjtN6E", title: "AES" },
+                            { url: "https://www.youtube.com/embed/DLjzI5dX8jc", title: "SP Networks" },
                             { url: "https://www.youtube.com/embed/vsXMMT2CqqE", title: "RSA" },
                             { url: "https://www.youtube.com/embed/GSIDS_lvRv4", title: "Public Key Cryptography" },
                             { url: "https://www.youtube.com/embed/wlSG3pEiQdc", title: "HMAC" },
