@@ -21,6 +21,8 @@ export const TOPIC_MEDIA = {
                             { url: "https://www.youtube.com/embed/0TLDTodL7Lc",        title: "What is TLS/SSL?" },
                             { url: "https://www.youtube.com/embed/86cQJ0MMses",         title: "TLS Handshake" },
                             { url: "https://www.youtube.com/embed/s22eJ1eVLTU",         title: "What are Digital Signatures?" },
+                            { url: "https://www.youtube.com/embed/JA0vaIb4158",          title: "TLS 1.3 vs 1.2" },
+                            { url: "https://www.youtube.com/embed/ZkL10eoG1PY",          title: "TLS 1.2" },
                           ], audioUrl: `${MEDIA}/materials/TLS_1.3.m4a` },
   "tls13-key-schedule": { videos: [
                             { url: `${MEDIA}/materials/Unlocking%20TLS%201.mp4`,       title: "Unlocking TLS 1.3" },
