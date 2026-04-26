@@ -44,6 +44,26 @@ function MarkdownWithImages({ content }) {
   )
 }
 
+function CommunityNoteCard({ note }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="border border-gray-800 rounded-lg overflow-hidden">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-900 transition-colors"
+      >
+        <span className="text-xs font-semibold text-blue-400">@{note.author}</span>
+        <span className="text-gray-600 text-xs">{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div className="border-t border-gray-800 px-4 py-3 bg-gray-950 prose prose-invert prose-sm max-w-none">
+          <MarkdownWithImages content={note.content} />
+        </div>
+      )}
+    </div>
+  )
+}
+
 const NOTE_TABS = ["Write", "Community"]
 
 export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
@@ -226,19 +246,12 @@ export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
         )}
 
         {noteTab === "Community" && (
-          <div className="overflow-auto max-h-[65vh] space-y-4">
+          <div className="overflow-auto max-h-[65vh] space-y-2">
             {communityLoading
               ? <p className="text-gray-500 text-sm text-center py-8">Loading...</p>
               : community.length === 0
                 ? <p className="text-gray-500 text-sm text-center py-8">No public notes from others yet.</p>
-                : community.map((n, i) => (
-                    <div key={i} className="bg-gray-900 rounded-lg border border-gray-800 p-4">
-                      <p className="text-xs text-blue-400 font-semibold mb-2">@{n.author}</p>
-                      <div className="prose prose-invert prose-sm max-w-none">
-                        <MarkdownWithImages content={n.content} />
-                      </div>
-                    </div>
-                  ))
+                : community.map((n, i) => <CommunityNoteCard key={i} note={n} />)
             }
           </div>
         )}
