@@ -30,13 +30,17 @@ function MarkdownWithImages({ content }) {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
-        img: ({ src, alt }) => (
-          <img
-            src={src}
-            alt={alt}
-            className="max-w-full rounded-lg border border-gray-700 my-2"
-          />
-        ),
+        img: ({ src, alt }) =>
+          src?.endsWith(".pdf") ? (
+            <iframe
+              src={src}
+              title={alt || "PDF"}
+              className="w-full rounded-lg border border-gray-700 my-2"
+              style={{ height: "500px" }}
+            />
+          ) : (
+            <img src={src} alt={alt} className="max-w-full rounded-lg border border-gray-700 my-2" />
+          ),
       }}
     >
       {content}
@@ -207,7 +211,7 @@ export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
                   Preview
                 </button>
               </div>
-              <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+              <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/svg+xml,application/pdf" className="hidden" onChange={handleImageUpload} />
               <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploading}

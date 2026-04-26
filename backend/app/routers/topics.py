@@ -9,8 +9,8 @@ from app.schemas import NoteOut, QuestionOut, UserNoteRequest, ProgressToggleReq
 from app.auth import get_current_user
 
 UPLOADS_DIR = "/uploads"
-ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif", "image/webp"}
-EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp"}
+ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif", "image/webp", "image/svg+xml", "application/pdf"}
+EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp", "image/svg+xml": ".svg", "application/pdf": ".pdf"}
 
 router = APIRouter(prefix="/topics", tags=["topics"])
 
