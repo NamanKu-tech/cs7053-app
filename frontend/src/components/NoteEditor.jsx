@@ -55,6 +55,7 @@ export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
   const [community, setCommunity] = useState([])
   const [communityLoading, setCommunityLoading] = useState(false)
   const [uploading, setUploading] = useState(false)
+  const [writeMode, setWriteMode] = useState("edit")
   const fileInputRef = useRef(null)
   const textareaRef = useRef(null)
 
@@ -171,7 +172,21 @@ export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
 
         {noteTab === "Write" && (
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <div className="flex rounded-lg overflow-hidden border border-gray-700 text-xs">
+                <button
+                  onClick={() => setWriteMode("edit")}
+                  className={`px-3 py-1 font-medium transition-colors ${writeMode === "edit" ? "bg-gray-700 text-white" : "bg-gray-900 text-gray-400 hover:text-gray-200"}`}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => setWriteMode("preview")}
+                  className={`px-3 py-1 font-medium transition-colors ${writeMode === "preview" ? "bg-gray-700 text-white" : "bg-gray-900 text-gray-400 hover:text-gray-200"}`}
+                >
+                  Preview
+                </button>
+              </div>
               <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
               <button
                 onClick={() => fileInputRef.current?.click()}
@@ -188,13 +203,25 @@ export default function NoteEditor({ slug, prebuiltContent, userNoteContent }) {
                 {isPublic ? "🌐 Public" : "🔒 Private"}
               </button>
             </div>
-            <textarea
-              ref={textareaRef}
-              value={content}
-              onChange={e => { setContent(e.target.value); setSaved(false) }}
-              placeholder="Add your own notes here (markdown + images supported)..."
-              className="w-full bg-gray-900 text-gray-200 text-sm rounded-lg p-4 border border-gray-800 focus:outline-none focus:border-blue-500 resize-none h-[58vh] font-mono"
-            />
+            {writeMode === "edit"
+              ? (
+                <textarea
+                  ref={textareaRef}
+                  value={content}
+                  onChange={e => { setContent(e.target.value); setSaved(false) }}
+                  placeholder="Add your own notes here (markdown + images supported)..."
+                  className="w-full bg-gray-900 text-gray-200 text-sm rounded-lg p-4 border border-gray-800 focus:outline-none focus:border-blue-500 resize-none h-[58vh] font-mono"
+                />
+              )
+              : (
+                <div className="prose prose-invert prose-sm max-w-none bg-gray-900 rounded-lg p-4 overflow-auto h-[58vh] border border-gray-800">
+                  {content.trim()
+                    ? <MarkdownWithImages content={content} />
+                    : <p className="text-gray-600 italic">Nothing to preview yet.</p>
+                  }
+                </div>
+              )
+            }
           </div>
         )}
 
