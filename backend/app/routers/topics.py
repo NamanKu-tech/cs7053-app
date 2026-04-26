@@ -1,10 +1,16 @@
+import uuid
+import os
 from datetime import datetime
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import Topic, Note, Question, UserTopicProgress, User, TopicMaterial, UserMaterialProgress
-from app.schemas import NoteOut, QuestionOut, UserNoteRequest, ProgressToggleRequest, TopicMaterialOut, TopicMaterialsResponse
+from app.schemas import NoteOut, QuestionOut, UserNoteRequest, ProgressToggleRequest, TopicMaterialOut, TopicMaterialsResponse, CommunityNoteOut
 from app.auth import get_current_user
+
+UPLOADS_DIR = "/uploads"
+ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif", "image/webp"}
+EXTENSIONS = {"image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif", "image/webp": ".webp"}
 
 router = APIRouter(prefix="/topics", tags=["topics"])
 
@@ -52,8 +58,49 @@ def save_user_note(slug: str, body: UserNoteRequest, db: Session = Depends(get_d
     topic = _get_topic_or_404(slug, db)
     progress = _get_or_create_progress(current_user.id, topic.id, db)
     progress.user_note = body.content
+    progress.note_public = body.is_public
     db.commit()
-    return {"saved": True}
+    return {"saved": True, "is_public": progress.note_public}
+
+
+@router.get("/{slug}/notes/user/visibility")
+def get_note_visibility(slug: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    topic = _get_topic_or_404(slug, db)
+    progress = db.query(UserTopicProgress).filter(
+        UserTopicProgress.user_id == current_user.id,
+        UserTopicProgress.topic_id == topic.id,
+    ).first()
+    return {"is_public": progress.note_public if progress else False}
+
+
+@router.get("/{slug}/notes/community", response_model=list[CommunityNoteOut])
+def get_community_notes(slug: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    topic = _get_topic_or_404(slug, db)
+    rows = db.query(UserTopicProgress, User).join(User).filter(
+        UserTopicProgress.topic_id == topic.id,
+        UserTopicProgress.note_public == True,
+        UserTopicProgress.user_note != None,
+        UserTopicProgress.user_note != "",
+        UserTopicProgress.user_id != current_user.id,
+    ).all()
+    return [
+        CommunityNoteOut(author=user.email.split("@")[0], content=progress.user_note)
+        for progress, user in rows
+    ]
+
+
+@router.post("/{slug}/notes/upload-image")
+async def upload_image(slug: str, file: UploadFile = File(...), current_user: User = Depends(get_current_user)):
+    if file.content_type not in ALLOWED_IMAGE_TYPES:
+        raise HTTPException(status_code=400, detail="Only image files allowed")
+    ext = EXTENSIONS[file.content_type]
+    filename = f"{uuid.uuid4()}{ext}"
+    os.makedirs(UPLOADS_DIR, exist_ok=True)
+    path = os.path.join(UPLOADS_DIR, filename)
+    content = await file.read()
+    with open(path, "wb") as f:
+        f.write(content)
+    return {"url": f"/uploads/{filename}"}
 
 
 @router.get("/{slug}/questions", response_model=list[QuestionOut])

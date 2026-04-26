@@ -61,6 +61,12 @@ class ProgressToggleRequest(BaseModel):
 
 class UserNoteRequest(BaseModel):
     content: str
+    is_public: bool = False
+
+
+class CommunityNoteOut(BaseModel):
+    author: str
+    content: str
 
 
 class GradeRequest(BaseModel):

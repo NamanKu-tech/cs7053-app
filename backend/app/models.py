@@ -51,6 +51,7 @@ class UserTopicProgress(Base):
     completed: Mapped[bool] = mapped_column(Boolean, default=False)
     completed_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     user_note: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    note_public: Mapped[bool] = mapped_column(Boolean, default=False)
     user: Mapped["User"] = relationship(back_populates="progress")
     topic: Mapped["Topic"] = relationship(back_populates="progress")
 
