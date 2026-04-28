@@ -68,6 +68,13 @@ Social-engineering over 2 years; attacker "Jia Tan" gained commit access to XZ U
 
 **Exam use:** "Supply-chain via long-con social engineering. SBOM + signed dependency releases + code review of third-party commits would reduce exposure."
 
+
+## Relevant RFCs
+
+- **RFC 6520** — *TLS/DTLS Heartbeat Extension* — the spec that contained Heartbleed (CVE-2014-0160); the bug was trusting a user-supplied length field without bounds checking
+- **RFC 6101** — *SSL 3.0 (Historical)* — SSLv3 that POODLE and DROWN exploit; documents the CBC padding oracle weakness
+- **RFC 7457** — *Summary of Known TLS/DTLS Attacks* — comprehensive post-mortem of TLS vulnerabilities including BEAST, CRIME, Lucky13; good revision checklist
+
 <!-- MODE:HINGLISH -->
 # Real Incidents — Hinglish mein
 

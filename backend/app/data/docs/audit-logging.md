@@ -90,6 +90,13 @@ Legal basis for retention: Article 6(1)(c) — compliance with legal obligation;
 - Encryption keys
 - Excessive PII (minimisation — log user_id, not full name + address + DOB)
 
+
+## Relevant RFCs
+
+- **RFC 5424** — *Syslog Protocol* — the standard structured log format; severity levels (0–7), facility codes, structured data fields
+- **RFC 5425** — *TLS Transport Mapping for Syslog* — how to send logs securely over TLS; prevents log tampering in transit
+- **RFC 3881** — *Security Audit and Access Accountability Message XML Schema* — healthcare-focused but widely cited schema for what a security audit event must contain: who, what, when, where, outcome
+
 <!-- MODE:HINGLISH -->
 # Audit Logging — Hinglish mein
 

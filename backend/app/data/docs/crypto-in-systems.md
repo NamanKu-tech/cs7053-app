@@ -87,6 +87,15 @@ Server never sees plaintext. Keys generated/held by end users only. Examples: Si
 - **Using random() for crypto:** use `os.urandom()` / `crypto.getRandomValues()` / `SecureRandom`
 - **Not validating AEAD tag:** decrypting before checking tag → padding oracle behaviour
 
+
+## Relevant RFCs
+
+- **RFC 5869** — *HKDF — HMAC-based Key Derivation Function* — how to derive multiple keys from one shared secret; used in TLS 1.3, Signal, Noise protocol
+- **RFC 2104** — *HMAC: Keyed-Hashing for Message Authentication* — the MAC construction; security proof relies on collision resistance of the underlying hash
+- **RFC 8439** — *ChaCha20 and Poly1305 for IETF Protocols* — stream cipher + MAC; preferred in software (no AES-NI); used in TLS 1.3, WireGuard, SSH
+- **RFC 9180** — *Hybrid Public Key Encryption (HPKE)* — modern ECIES-style construction combining KEM + KDF + AEAD; used in ECH, MLS, ODoH
+- **RFC 8017** — *PKCS#1 v2.2 / RSA-OAEP* — the correct RSA encryption padding; contrasts with PKCS#1 v1.5 which is vulnerable to Bleichenbacher oracle attacks
+
 <!-- MODE:HINGLISH -->
 # Crypto in Systems — Hinglish mein
 

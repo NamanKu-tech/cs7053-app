@@ -82,6 +82,13 @@ Q3 often has a "statistics" or "analytics" requirement alongside PII. Use:
 - **Differential privacy** — add calibrated noise; mathematical guarantee
 - **Aggregation only** — never release individual records; only counts/averages
 
+
+## Relevant RFCs
+
+- **RFC 7235** — *HTTP Authentication Framework* — defines the challenge-response authentication model used in many layered architectures
+- **RFC 6749** — *OAuth 2.0 Authorization Framework* — the standard separation-of-concerns pattern: resource server, authorisation server, client; basis for many secure architecture patterns
+- **RFC 8725** — *JSON Web Token Best Current Practices* — common pitfalls in JWT-based architectures (alg:none, weak secrets, missing audience check)
+
 <!-- MODE:HINGLISH -->
 # Secure Architecture — Hinglish mein
 

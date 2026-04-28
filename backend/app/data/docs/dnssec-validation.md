@@ -85,6 +85,14 @@ _443._tcp.tcd.ie. TLSA 3 1 1 [SHA-256 of cert public key]
 
 DNSSEC must validate for DANE to be trustworthy.
 
+
+## Relevant RFCs
+
+- **RFC 4035** — *Protocol Modifications for DNSSEC* — Section 5 defines the full validation algorithm: from trust anchor → DS → DNSKEY → RRSIG verification
+- **RFC 4033** — *DNS Security Introduction* — defines the `AD` (Authentic Data) flag in DNS responses; what SERVFAIL means when validation fails
+- **RFC 6840** — *Clarifications and Implementation Notes for DNSSEC* — edge cases in validation: expired signatures, missing records, insecure delegations, opt-out zones
+- **RFC 5155** — *NSEC3* — how validators check authenticated denial of existence without revealing the full zone contents
+
 <!-- MODE:HINGLISH -->
 # DNSSEC Validation — Hinglish mein
 

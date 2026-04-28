@@ -9,6 +9,7 @@ import Graph from "./pages/Graph"
 import Resources from "./pages/Resources"
 import Cheatsheet from "./pages/Cheatsheet"
 import MockExam from "./pages/MockExam"
+import RFCs from "./pages/RFCs"
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/resources" element={<ProtectedRoute><Resources /></ProtectedRoute>} />
           <Route path="/cheatsheet" element={<ProtectedRoute><Cheatsheet /></ProtectedRoute>} />
           <Route path="/mock" element={<ProtectedRoute><MockExam /></ProtectedRoute>} />
+          <Route path="/rfcs" element={<ProtectedRoute><RFCs /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </BrowserRouter>

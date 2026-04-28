@@ -72,6 +72,13 @@ Every official solution since 2018 includes the phrase *"identify assets (includ
 - **Not including reputation** — costs marks every time
 - Confusing assets with risks ("data breach" is a risk; "customer data" is the asset)
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — Section 3 defines asset categories: data confidentiality, data integrity, availability, accountability
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — frames metadata and traffic analysis as assets worth protecting, beyond just payload content
+- **RFC 6973** — *Privacy Considerations for Internet Protocols* — Section 3 defines privacy-relevant assets: identity, location, associations, communication content
+
 <!-- MODE:HINGLISH -->
 # Assets Identify Karna — Hinglish mein
 

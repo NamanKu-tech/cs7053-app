@@ -64,6 +64,14 @@ Larger certs increase TLS handshake size, causing TCP fragmentation, requiring E
 
 "For Q2's 'how would you future-proof TLS': deploy hybrid X25519+Kyber768 for key exchange (already standard in Chrome/Cloudflare); plan ML-DSA for certificate signatures once size constraints are resolved; upgrade symmetric to AES-256 (Grover halves key strength); document SNDL threat to justify urgency."
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — the extensibility mechanisms (NamedGroup, KeyShare) that PQC algorithms plug into without changing the handshake structure
+- **RFC 9180** — *Hybrid Public Key Encryption (HPKE)* — the building block used in Encrypted Client Hello and proposed PQC hybrid constructions
+- **draft-ietf-tls-hybrid-design** — *Hybrid Key Exchange in TLS 1.3* — IETF draft defining how to combine classical (X25519) + PQC (ML-KEM) key exchange in a single handshake
+- **NIST FIPS 203** — *ML-KEM (Kyber)* — the standardised lattice-based KEM; the algorithm being added to TLS via the hybrid draft
+
 <!-- MODE:HINGLISH -->
 # PQC in TLS — Hinglish mein
 

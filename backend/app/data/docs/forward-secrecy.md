@@ -62,6 +62,14 @@ Fix: minimum 2048-bit DH parameters; prefer ECDHE (X25519) over finite-field DHE
 
 Nation-state adversaries record encrypted traffic now, expecting to decrypt it when quantum computers can break RSA/ECDH. Forward secrecy does not protect against this if the *session key* itself can be broken (it's AES-symmetric, so Grover's halves the key strength — AES-128 becomes 64-bit effective). Mitigation: upgrade to AES-256 + hybrid PQC key exchange.
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — Section 1.2 explicitly lists forward secrecy as a design goal; ephemeral key exchange is mandatory (no static RSA)
+- **RFC 7919** — *Negotiated Finite Field Diffie-Hellman Ephemeral Parameters for TLS* — standardises safe FFDHE groups (ffdhe2048 etc.) to prevent weak DH parameter attacks
+- **RFC 4492** — *ECC Cipher Suites for TLS* — introduced ECDHE into TLS; foundation for the X25519 key exchange used in TLS 1.3
+- **RFC 8031** — *Curve25519 and Curve448 for IKEv2* — context for why X25519 (Curve25519) is the preferred group: faster, no parameter manipulation risk
+
 <!-- MODE:HINGLISH -->
 # Forward Secrecy — Hinglish mein
 

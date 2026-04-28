@@ -77,6 +77,13 @@ Structure: pick 3 attack paths, for each state:
 3. What access you gain
 4. Which of your own defences it bypasses or exploits a gap in
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — attacker model taxonomy: passive eavesdropper, active MITM, off-path attacker, compromised endpoint
+- **RFC 7457** — *Summary of Known TLS/DTLS Attacks* — useful reference when constructing attacks against TLS-secured systems
+- **RFC 6973** — *Privacy Threat Model* — attacker goals beyond confidentiality: re-identification, aggregation, correlation across sessions
+
 <!-- MODE:HINGLISH -->
 # Attacker Mindset — Hinglish mein
 

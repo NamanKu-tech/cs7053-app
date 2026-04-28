@@ -78,6 +78,14 @@ DNS over UDP: small query → large response. Authoritative servers return large
 
 Mitigation: response rate limiting (RRL) on authoritative servers; BCP38 (ingress filtering to prevent source-IP spoofing).
 
+
+## Relevant RFCs
+
+- **RFC 1034** — *Domain Names: Concepts and Facilities* — the original 1987 DNS spec; defines the namespace hierarchy, zones, resolvers, and the iterative resolution algorithm
+- **RFC 1035** — *Domain Names: Implementation and Specification* — companion to RFC 1034; wire format, resource record types (A, MX, NS, CNAME, PTR), UDP/TCP transport
+- **RFC 2181** — *Clarifications to the DNS Specification* — fixes ambiguities in RFC 1034/1035; TTL semantics, CNAME restrictions, authoritative vs non-authoritative answers
+- **RFC 2308** — *Negative Caching of DNS Queries* — how NXDOMAIN responses are cached; SOA minimum TTL as the negative cache TTL
+
 <!-- MODE:HINGLISH -->
 # DNS Basics — Hinglish mein
 

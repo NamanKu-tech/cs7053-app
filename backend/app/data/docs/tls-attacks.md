@@ -65,6 +65,14 @@ Not a protocol flaw — implementation bug. Still requires certificate rotation 
 ### DROWN
 SSLv2 allows export cipher suites and has a different padding format. Attacker uses SSLv2 oracle to decrypt TLS RSA-key-transport sessions sharing the same certificate private key. 33% of HTTPS servers vulnerable at 2016 disclosure.
 
+
+## Relevant RFCs
+
+- **RFC 7457** — *Summary of Known Attacks on TLS and DTLS* — the exam revision list: BEAST, CRIME, TIME, BREACH, Lucky13, POODLE, DROWN, Logjam — all summarised with mitigations
+- **RFC 5746** — *TLS Renegotiation Indication Extension* — fix for the 2009 renegotiation injection attack; required understanding of why renegotiation was broken
+- **RFC 6520** — *TLS/DTLS Heartbeat Extension* — the spec containing Heartbleed; the bug is in the implementation, not the spec, but reading the spec shows why the length field exists
+- **RFC 6101** — *SSL 3.0 (Historical)* — the CBC padding vulnerability in SSLv3 that POODLE exploits; basis for understanding why padding oracles are dangerous
+
 <!-- MODE:HINGLISH -->
 # Named TLS Attacks — Hinglish mein
 

@@ -133,6 +133,15 @@ SPF + DKIM + DMARC records live in DNS as TXT records. If DNS is not DNSSEC-sign
 
 Q3 system design often asks: "How would you secure email for your system?" Answer: SPF + DKIM + DMARC (with p=reject), DNSSEC on the DNS zone, TLS for SMTP transport (STARTTLS or SMTP over TLS). Mention reporting (`rua=`) for operational visibility.
 
+
+## Relevant RFCs
+
+- **RFC 7208** — *Sender Policy Framework (SPF)* — TXT record listing authorised sending IPs; `v=spf1 include:... -all`; checks envelope MAIL FROM not From: header
+- **RFC 6376** — *DomainKeys Identified Mail (DKIM)* — sender signs selected headers + body with private key; public key in DNS; survives forwarding unlike SPF
+- **RFC 7489** — *DMARC: Domain-based Message Authentication, Reporting and Conformance* — policy on SPF/DKIM failure (none/quarantine/reject); alignment between From: and SPF/DKIM domain
+- **RFC 6698** — *DANE: DNS-based Authentication of Named Entities* — TLSA records to pin expected certificate for SMTP; requires DNSSEC; prevents rogue CA misissuance for mail servers
+- **RFC 8461** — *SMTP MTA Strict Transport Security (MTA-STS)* — policy file enforcing TLS for SMTP; alternative to DANE that doesn't require DNSSEC
+
 <!-- MODE:HINGLISH -->
 # Email Security — Hinglish mein
 

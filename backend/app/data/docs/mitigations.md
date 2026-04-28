@@ -63,6 +63,13 @@ Generic = 0 marks. Specific mechanism + justification = full marks.
 
 For Q1(b), each risk needs exactly one concrete countermeasure. Name the mechanism, not the category. "Encryption" is a category. "AES-256-GCM at rest + TLS 1.3 in transit, keys in HSM" is a countermeasure.
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Security Considerations Guidelines* — Section 5 covers standard mitigation patterns: authentication, confidentiality, integrity, non-repudiation
+- **RFC 6973** — *Privacy Threat Model* — Section 6 maps each privacy threat to concrete mitigations: data minimisation, anonymisation, consent, access controls
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — motivates mitigations at the protocol design level (e.g. encrypting by default) rather than just at deployment
+
 <!-- MODE:HINGLISH -->
 # Mitigations — Hinglish mein
 

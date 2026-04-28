@@ -97,6 +97,14 @@ Teaches: **root KSK is single point of failure for global DNSSEC.** Key ceremony
 5. Chain upward until root trust anchor
 6. Verify target record's RRSIG using zone's ZSK
 
+
+## Relevant RFCs
+
+- **RFC 4034** — *Resource Records for DNSSEC* — DNSKEY record format; flag 257 = KSK (SEP bit set), flag 256 = ZSK; DS record as hash of child KSK
+- **RFC 7958** — *DNSSEC Trust Anchor Publication for the Root Zone* — how the root KSK is published and distributed; RFC 5011 automated rollover mechanism
+- **RFC 5011** — *Automated Updates of DNS Security (DNSSEC) Trust Anchors* — the protocol resolvers use to automatically track root KSK rollovers without manual intervention
+- **RFC 6840** — *Clarifications and Implementation Notes for DNSSEC* — practical guidance on key rollover timing, signature validity periods, and resolver behaviour
+
 <!-- MODE:HINGLISH -->
 # DNSSEC Key Hierarchy — Hinglish mein
 

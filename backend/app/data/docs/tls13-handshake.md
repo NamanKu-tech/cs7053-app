@@ -75,6 +75,14 @@ Client reuses PSK (pre-shared key) from previous session. Sends early data in fi
 | Encryption of handshake | Partial | Most messages encrypted |
 | Forward secrecy | Optional | Mandatory |
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — the primary spec; Appendix C (implementation notes), D (backward compat), E (security analysis) are the exam-relevant sections
+- **RFC 5246** — *TLS 1.2* — predecessor; exam often asks to contrast 1.2 vs 1.3 (extra round trip, static RSA key exchange, MAC-then-encrypt)
+- **RFC 7301** — *ALPN — Application-Layer Protocol Negotiation* — how client/server agree on h2/h3 inside the TLS handshake
+- **RFC 8448** — *TLS 1.3 Example Handshake Traces* — known-answer test vectors for the full handshake; used to verify implementations
+
 <!-- MODE:HINGLISH -->
 # TLS 1.3 Handshake — Hinglish mein
 

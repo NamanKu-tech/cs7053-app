@@ -73,6 +73,13 @@ For any scenario involving EU residents or EU-established organisations:
 - Art. 35: DPIA if high-risk processing
 - Art. 33: 72h breach notification to DPC/supervisory authority
 
+
+## Relevant RFCs
+
+- **RFC 2119** — *Key Words for use in RFCs (MUST, SHOULD, MAY)* — the vocabulary for writing security requirements; exam answers using MUST/SHOULD signal precision
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — the template for enumerating security requirements in any protocol or system design
+- **RFC 6973** — *Privacy Considerations for Internet Protocols* — companion checklist for privacy requirements alongside security requirements
+
 <!-- MODE:HINGLISH -->
 # Security Requirements — Hinglish mein
 

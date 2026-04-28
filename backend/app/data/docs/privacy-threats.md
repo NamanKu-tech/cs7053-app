@@ -61,6 +61,13 @@ These threats appear in Q1 scenarios as the *what* (what privacy harm could occu
 - **Art. 35** — DPIA required for high-risk processing
 - **Art. 25** — Privacy by design and by default
 
+
+## Relevant RFCs
+
+- **RFC 6973** — *Privacy Considerations for Internet Protocols* — the primary reference; defines all seven threat categories used in exam answers: surveillance, stored data exposure, aggregation, correlation, secondary use, exclusion, identification
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — complements RFC 6973; classifies mass metadata collection as an active protocol-level attack
+- **RFC 8890** — *The Internet is for End Users* — Farrell co-authored; argues protocol designers must prioritise end-user privacy over operator convenience
+
 <!-- MODE:HINGLISH -->
 # Privacy Threats — Hinglish mein
 

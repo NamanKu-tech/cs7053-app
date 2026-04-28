@@ -58,6 +58,14 @@ Android apps studied: 41% accept all certificates; 16% accept all hostnames. Mos
 
 Server-side session tickets are encrypted with a ticket encryption key (TEK). At scale (millions of servers), TEK must be shared across fleet. If TEK is compromised, all sessions using resumption lose forward secrecy. Rotate TEKs every few hours.
 
+
+## Relevant RFCs
+
+- **RFC 8555** — *ACME: Automatic Certificate Management Environment* — the protocol behind Let's Encrypt; how certificates are issued and renewed without human intervention
+- **RFC 9162** — *Certificate Transparency Version 2.0* — append-only logs of all issued certificates; browsers require SCTs in TLS handshake; prevents silent misissuance
+- **RFC 5280** — *X.509 PKI Certificate and CRL Profile* — the certificate format; fields like Subject, SAN, validity period, key usage that appear in CT logs
+- **RFC 7633** — *X.509v3 TLS Feature Extension* — must-staple: tells browsers the server will always include OCSP staple, preventing soft-fail revocation bypass
+
 <!-- MODE:HINGLISH -->
 # Large-Scale TLS — Hinglish mein
 

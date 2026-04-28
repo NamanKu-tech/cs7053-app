@@ -92,6 +92,13 @@ Every risk gets two independent scores:
 - Repeating Q1(a) content here = marks deducted
 - Repeating risks between Q1(b) and Q1(c) = penalised in official solutions
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — provides the standard threat classification framework: passive vs active attacks, insider vs outsider
+- **RFC 6973** — *Privacy Threat Model* — classifies privacy risks independently from security risks; useful when exam asks to distinguish privacy vs security threats
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — example of a risk re-classification: passive monitoring was previously considered low-risk; this RFC reclassified it as a serious threat
+
 <!-- MODE:HINGLISH -->
 # Risks Classify Karna — Hinglish mein
 

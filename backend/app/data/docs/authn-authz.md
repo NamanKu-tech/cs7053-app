@@ -78,6 +78,14 @@ Claims in JWT: `sub` (user ID), `email`, `name`, `aud` (audience — your app ID
 
 **Just-in-time (JIT) access:** Admin rights granted only for specific task, for limited time, logged. Reduces standing privilege.
 
+
+## Relevant RFCs
+
+- **RFC 4120** — *Kerberos Network Authentication Service (V5)* — the full Kerberos spec; TGT/TGS ticket flow, AS-REQ/AS-REP, key distribution centre architecture
+- **RFC 6749** — *OAuth 2.0 Authorization Framework* — separation of authentication (who you are) from authorisation (what you can do); the standard for delegated access
+- **RFC 7519** — *JSON Web Token (JWT)* — the token format used in OAuth/OIDC; claims structure, signing (JWS), exam pitfalls: alg:none, unverified iss
+- **RFC 7642** — *SCIM — System for Cross-domain Identity Management* — how large organisations provision/deprovision user identities across systems
+
 <!-- MODE:HINGLISH -->
 # Auth + Authz — Hinglish mein
 

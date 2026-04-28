@@ -75,6 +75,14 @@ TLS 1.3 AEAD: `AEAD_encrypt(plaintext)` → no padding; tag covers everything; t
 - `TLS_AES_128_CCM_SHA256`
 - `TLS_AES_128_CCM_8_SHA256`
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — Section 5 defines the record layer: TLSPlaintext, TLSCiphertext, content type padding, max 2^14 byte records
+- **RFC 5116** — *An Interface and Algorithms for Authenticated Encryption* — defines the AEAD interface that TLS 1.3 mandates; specifies the 16-octet authentication tag
+- **RFC 8439** — *ChaCha20-Poly1305* — one of the two AEAD algorithms in TLS 1.3 (alongside AES-128-GCM); preferred on devices without AES hardware acceleration
+- **RFC 5288** — *AES-GCM Cipher Suites for TLS* — background on AES-GCM before it was mandatory in TLS 1.3
+
 <!-- MODE:HINGLISH -->
 # TLS Record Layer + AEAD — Hinglish mein
 

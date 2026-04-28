@@ -122,6 +122,14 @@ These are orthogonal solutions. Best deployment: DoH/DoT + DNSSEC validation at 
 **Operational tension:**
 Enterprise networks use DNS for security monitoring (block malware C2 domains, filter content). DoH bypasses network-level DNS filtering → enterprise CISO problem. Split-horizon DNS also breaks. Solution: enterprise DoH resolvers (employees use corporate DoH endpoint instead of public one).
 
+
+## Relevant RFCs
+
+- **RFC 7858** — *DNS over TLS (DoT)* — port 853, TLS-encrypted DNS; authentication via PKIX or DANE; keeps DNS privacy from on-path observers
+- **RFC 8484** — *DNS over HTTPS (DoH)* — DNS inside HTTPS POST/GET on port 443; indistinguishable from web traffic; breaks enterprise DNS filtering
+- **RFC 9230** — *Oblivious DNS over HTTPS (ODoH)* — proxy between client and resolver; proxy sees IP not query, resolver sees query not IP; maximum unlinkability
+- **RFC 8310** — *Usage Profiles for DNS over TLS / DTLS* — opportunistic vs strict authentication modes; how clients verify the resolver's identity
+
 <!-- MODE:HINGLISH -->
 # DoH / DoT — Hinglish mein
 

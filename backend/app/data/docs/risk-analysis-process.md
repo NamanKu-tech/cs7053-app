@@ -55,6 +55,13 @@ That's it. In an exam, the question always says "describe the PROCESS" — so th
 - Generic answers with no scenario adaptation
 - Forgetting reputation as an asset
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — how to think about threats and mitigations systematically; the framework behind structured risk analysis
+- **RFC 6973** — *Privacy Considerations for Internet Protocols* — defines the privacy threat taxonomy (surveillance, aggregation, correlation, secondary use, disclosure, exclusion) used directly in Q1c answers
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — Farrell co-authored; establishes that passive mass surveillance is a legitimate attack class to mitigate
+
 <!-- MODE:HINGLISH -->
 # Risk Analysis Process — Hinglish mein
 

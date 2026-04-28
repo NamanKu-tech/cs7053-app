@@ -83,6 +83,14 @@ Every key derivation includes the transcript hash (hash of all handshake message
 | Resumption PSK | All sessions using that PSK |
 | Server certificate private key | Impersonate server (future sessions); cannot decrypt past (FS) |
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — Section 7 defines the full key schedule; every label, every HKDF-Expand-Label call is specified here
+- **RFC 5869** — *HKDF — HMAC-based Key Derivation Function* — defines HKDF-Extract and HKDF-Expand that TLS 1.3 uses throughout; includes the security proof
+- **RFC 2104** — *HMAC: Keyed-Hashing for Message Authentication* — the MAC construction underlying HKDF; understanding this is needed to follow the key schedule derivation
+- **RFC 8448** — *TLS 1.3 Example Handshake Traces* — includes worked examples of key schedule outputs for specific inputs; use to check your understanding
+
 <!-- MODE:HINGLISH -->
 # TLS 1.3 Key Schedule — Hinglish mein
 

@@ -66,6 +66,13 @@ Fix: ECDSA P-256 certificates (~3× smaller than RSA-2048); short chains (2 cert
 
 Server mitigations: single-use tickets (mark ticket as used in shared cache); time-limited anti-replay window (bloom filter); only allow idempotent requests in early data (e.g., GET, not POST with side effects).
 
+
+## Relevant RFCs
+
+- **RFC 8446** — *TLS 1.3* — Section 4.2.2 defines the Cookie extension for DTLS DoS mitigation; HelloRetryRequest flow prevents resource exhaustion before key exchange
+- **RFC 6347** — *DTLS 1.2* — DTLS-specific DoS problem: UDP has no connection state so servers must handle spoofed source IPs; stateless cookie mechanism defined here
+- **RFC 4987** — *TCP SYN Flooding Attacks and IP Spoofing Defences* — background on the SYN-cookie technique that inspired TLS/DTLS cookie anti-DoS
+
 <!-- MODE:HINGLISH -->
 # TLS DoS Attacks — Hinglish mein
 

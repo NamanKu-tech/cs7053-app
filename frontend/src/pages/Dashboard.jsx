@@ -23,6 +23,7 @@ export default function Dashboard() {
         <div className="flex gap-4">
           <button onClick={() => navigate("/mock")} className="text-gray-400 hover:text-white text-sm">Mock Exams</button>
           <button onClick={() => navigate("/cheatsheet")} className="text-gray-400 hover:text-white text-sm">Cheat Sheet</button>
+          <button onClick={() => navigate("/rfcs")} className="text-gray-400 hover:text-white text-sm">RFCs</button>
           <button onClick={() => navigate("/resources")} className="text-gray-400 hover:text-white text-sm">Resources</button>
           <button onClick={() => navigate("/graph")} className="text-gray-400 hover:text-white text-sm">Roadmap</button>
           <button onClick={logout} className="text-gray-400 hover:text-white text-sm">Logout</button>

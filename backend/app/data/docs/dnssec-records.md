@@ -85,6 +85,14 @@ NSEC3 hashes owner names (using iterated SHA-1 with a salt) before including the
 | ECDSA P-256 (alg 13) | 256 bits | Small (~64 bytes) | Fast | Recommended |
 | Ed25519 (alg 15) | 256 bits | Small (~64 bytes) | Fastest | Modern |
 
+
+## Relevant RFCs
+
+- **RFC 4033** — *DNS Security Introduction and Requirements* — overview of DNSSEC goals, threat model, and the chain of trust concept
+- **RFC 4034** — *Resource Records for the DNS Security Extensions* — defines DNSKEY, RRSIG, DS, NSEC record formats and semantics; the primary reference for exam questions on record structure
+- **RFC 4035** — *Protocol Modifications for the DNS Security Extensions* — how resolvers use DNSSEC records to validate responses; the validation algorithm
+- **RFC 5155** — *DNS Security (NSEC3)* — NSEC3 hashed denial-of-existence records that prevent zone walking while still providing authenticated NXDOMAIN
+
 <!-- MODE:HINGLISH -->
 # DNSSEC Records — Hinglish mein
 

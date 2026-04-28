@@ -66,6 +66,13 @@ That's exactly how secure software development should work.
 
 Describe: threat model at design → automated scanning in CI → pen test pre-launch → quarterly re-assessment + re-assess on change. Name at least one tool per phase. Reference a real incident to justify the process.
 
+
+## Relevant RFCs
+
+- **RFC 3552** — *Guidelines for Writing RFC Security Considerations* — the standard checklist every RFC must pass before publication; models what a security review looks like
+- **RFC 7258** — *Pervasive Monitoring is an Attack* — changed the IETF-wide security process: all new RFCs must now consider pervasive monitoring as a threat
+- **RFC 6973** — *Privacy Considerations for Internet Protocols* — companion to RFC 3552 for privacy; added to the IETF process after Snowden revelations
+
 <!-- MODE:HINGLISH -->
 # Security Processes + SDLC — Hinglish mein
 
